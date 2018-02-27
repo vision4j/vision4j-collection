@@ -15,4 +15,12 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
+    <build>
+
+    </build>
+
+    <dependencies>
+        
+    </dependencies>
+
 </project>

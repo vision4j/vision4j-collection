@@ -1,6 +1,5 @@
 package com.vision4j.classification;
 
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -10,9 +8,36 @@
         <version>9</version>
     </parent>
 
+    <name>${project.groupId}:${project.artifactId}</name>
+    <description>Core artifact for the Vision4j classification problem</description>
+    <url>https://vision4j.com/</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Hristo Vrigazov</name>
+            <email>hvrigazov@gmail.com</email>
+            <organization>Vision4j</organization>
+            <organizationUrl>https://vision4j.com/</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/vision4j/vision4j-collection.git</connection>
+        <developerConnection>scm:git:ssh://github.com:vision4j/vision4j-collection.git</developerConnection>
+        <url>https://github.com/vision4j/vision4j-collection/tree/master</url>
+      <tag>classification-0.1.0</tag>
+  </scm>
+
     <groupId>com.vision4j</groupId>
     <artifactId>classification</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>

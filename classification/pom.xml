@@ -29,7 +29,7 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/vision4j/vision4j-collection.git</connection>
+        <connection>scm:git:git@github.com:vision4j/vision4j-collection.git</connection>
         <developerConnection>scm:git:git@github.com:vision4j/vision4j-collection.git</developerConnection>
         <url>https://github.com/vision4j/vision4j-collection/tree/master</url>
         <tag>classification-1.0.0</tag>

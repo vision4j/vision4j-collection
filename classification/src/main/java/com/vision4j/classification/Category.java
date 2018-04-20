@@ -1,9 +1,12 @@
 package com.vision4j.classification;
 
 public class Category {
+    private int index;
+
     private String categoryName;
 
-    public Category(String categoryName) {
+    public Category(int index, String categoryName) {
+        this.index = index;
         this.categoryName = categoryName;
     }
 
@@ -11,4 +14,7 @@ public class Category {
         return categoryName;
     }
 
+    public int getIndex() {
+        return index;
+    }
 }

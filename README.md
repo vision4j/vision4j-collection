@@ -51,6 +51,6 @@ Prediction times (in seconds):
 | 0.07 | TODO | 0.73
 
 TODO:
-docker / nvidia-docker images
-AWS AMI
-Training measurements and estimations
+* docker / nvidia-docker images
+* AWS AMI
+* Training measurements and estimations

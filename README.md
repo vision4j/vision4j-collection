@@ -19,7 +19,25 @@ Implementations available for this problem:
 
 #### Pretrained VGG16 on ImageNet using DeepLearning4j
 
-Trained on the [ImageNet](www.image-net.org/) dataset
+Trained on the [ImageNet](www.image-net.org/) dataset.
+To use this implementation in your project, add the dependency:
 
+```xml
+<dependency>
+    <groupId>com.vision4j</groupId>
+    <artifactId>vgg16-deeplearning4j-classifier</artifactId>
+    <version>1.1.0</version>
+</dependency>
+```
 
+This implementation uses [ND4J](https://nd4j.org/), so you should add one more dependency depending on whether
+you have GPU or not. You can read more about it [here](https://nd4j.org/getstarted).
 
+Once you have added the dependency, you can use it like this:
+
+```java
+ImageClassifier imageClassifier = new Vgg16DeepLearning4jClassifier();
+Category category = imageClassifier.predict(new File("./cheetah.jpg"));
+String name = category.getCategoryName(); // cheetah
+int index = category.getIndex(); // 293
+```

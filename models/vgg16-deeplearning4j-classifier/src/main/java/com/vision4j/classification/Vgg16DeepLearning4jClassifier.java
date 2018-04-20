@@ -7,14 +7,29 @@ import org.deeplearning4j.util.ModelSerializer;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.dataset.api.preprocessor.DataNormalization;
 import org.nd4j.linalg.dataset.api.preprocessor.VGG16ImagePreProcessor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Ready to use VGG16 classifier for the ImageNet dataset.
+ */
 public class Vgg16DeepLearning4jClassifier implements ImageClassifier {
+
+    private static final Logger logger = LoggerFactory.getLogger(Vgg16DeepLearning4jClassifier.class);
+
+    private static final String pretrainedModelUrl = "https://s3.amazonaws.com/vision4j/models/vgg16_dl4j_inference.zip";
 
     private ComputationGraph vgg16;
     private NativeImageLoader imageLoader;
@@ -22,10 +37,18 @@ public class Vgg16DeepLearning4jClassifier implements ImageClassifier {
     private Categories categories;
     private ImageSize imageSize;
 
+    public Vgg16DeepLearning4jClassifier() throws IOException {
+        init(downloadComputationGraph());
+    }
+
     public Vgg16DeepLearning4jClassifier(File computationGraph) throws IOException {
         if (!computationGraph.exists()) {
             throw new IllegalStateException("The file provided for the VGG16 model '" + computationGraph.getAbsolutePath() + "' does not exist");
         }
+        init(computationGraph);
+    }
+
+    private void init(File computationGraph) throws IOException {
         this.vgg16 = ModelSerializer.restoreComputationGraph(computationGraph);
         this.scaler = new VGG16ImagePreProcessor();
         this.imageSize = new ImageSize(224, 224, 3);
@@ -36,6 +59,26 @@ public class Vgg16DeepLearning4jClassifier implements ImageClassifier {
                 .map(Category::new)
                 .collect(Collectors.toList());
         this.categories = new Categories(categories);
+    }
+
+    private File downloadComputationGraph() throws IOException {
+        try {
+            Path targetPath = Paths.get(System.getProperty("user.dir"), "vgg16_dl4j_inference.zip");
+            File targetFile = targetPath.toFile();
+            if (targetFile.exists()) {
+                logger.info("Model file {} exists", targetFile);
+                return targetFile;
+            }
+            URL website = new URL(pretrainedModelUrl);
+            logger.info("Downloading pretrained model from url {}", pretrainedModelUrl);
+            try (InputStream inputStream = website.openStream()) {
+                Files.copy(inputStream, targetPath, StandardCopyOption.REPLACE_EXISTING);
+            }
+            return targetFile;
+        } catch (MalformedURLException e) {
+            logger.error("The url " + pretrainedModelUrl + " is malformed", e);
+            throw new IOException(e);
+        }
     }
 
     @Override

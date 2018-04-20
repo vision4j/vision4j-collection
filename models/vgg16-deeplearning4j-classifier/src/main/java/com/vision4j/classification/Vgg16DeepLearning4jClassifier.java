@@ -7,6 +7,7 @@ import org.deeplearning4j.util.ModelSerializer;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.dataset.api.preprocessor.DataNormalization;
 import org.nd4j.linalg.dataset.api.preprocessor.VGG16ImagePreProcessor;
+import org.nd4j.linalg.factory.Nd4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,8 +20,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Ready to use VGG16 classifier for the ImageNet dataset.
@@ -53,11 +56,12 @@ public class Vgg16DeepLearning4jClassifier implements ImageClassifier {
         this.scaler = new VGG16ImagePreProcessor();
         this.imageSize = new ImageSize(224, 224, 3);
         this.imageLoader = new NativeImageLoader(imageSize.getHeight(), imageSize.getWidth(), imageSize.channels());
-        List<Category> categories = ImageNetLabels
-                .getLabels()
-                .stream()
-                .map(Category::new)
+
+        ArrayList<String> labels = ImageNetLabels.getLabels();
+        List<Category> categories = IntStream.range(0, labels.size())
+                .mapToObj(i -> new Category(i, labels.get(i)))
                 .collect(Collectors.toList());
+
         this.categories = new Categories(categories);
     }
 
@@ -89,8 +93,19 @@ public class Vgg16DeepLearning4jClassifier implements ImageClassifier {
     @Override
     public Category predict(InputStream inputStream) throws IOException {
         INDArray image = imageLoader.asMatrix(inputStream);
+        return predict(image);
+    }
+
+    @Override
+    public Category predict(File file) throws IOException {
+        INDArray image = imageLoader.asMatrix(file);
+        return predict(image);
+    }
+
+    private Category predict(INDArray image) {
         scaler.transform(image);
         INDArray output = vgg16.outputSingle(image);
-        return getAcceptableCategories().getCategory(output);
+        int categoryIndex = Nd4j.argMax(output).getInt(0);
+        return getAcceptableCategories().getCategories().get(categoryIndex);
     }
 }

@@ -32,12 +32,12 @@
         <connection>scm:git:git@github.com:vision4j/vision4j-collection.git</connection>
         <developerConnection>scm:git:git@github.com:vision4j/vision4j-collection.git</developerConnection>
         <url>https://github.com/vision4j/vision4j-collection/tree/master</url>
-        <tag>classification-1.1.0</tag>
+        <tag>classification-1.0.0</tag>
     </scm>
 
     <groupId>com.vision4j</groupId>
     <artifactId>classification</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>

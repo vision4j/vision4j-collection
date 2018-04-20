@@ -41,3 +41,16 @@ Category category = imageClassifier.predict(new File("./cheetah.jpg"));
 String name = category.getCategoryName(); // cheetah
 int index = category.getIndex(); // 293
 ```
+
+Minimum required memory for the model: 1.355 GB
+
+Prediction times (in seconds):
+
+| 1080Ti  | K80  | CPU (AMD Ryzen)
+| ------------- |:-------------:|:-------------:| 
+| 0.07 | TODO | 0.73
+
+TODO:
+docker / nvidia-docker images
+AWS AMI
+Training measurements and estimations

@@ -4,24 +4,26 @@ a list of implementations for different computer vision problems in a plug-and-p
 
 ## Problems
 
+
 ### Image classification
 
 By a given image, find the category that the image belongs to. For example, if a model is trained to recognize
 the categories: `lion`, `cheetah` and `tiger`, when given an image in one of those categories, it can recognize it.
 
-| Input        | Output           
-| ------------- |:-------------:| 
-| ![alt text](img/lion.resized.jpg) | lion 
+| Input        | Output
+| ------------- |:-------------:|
+| ![alt text](img/lion.resized.jpg) | lion
 | ![alt text](img/cheetah.resized.jpg) | cheetah
 | ![alt text](img/tiger.resized.jpg) | tiger
+
 
 Implementations available for this problem:
 
 #### Pretrained VGG16 on ImageNet using DeepLearning4j
 
 Trained on the [ImageNet](www.image-net.org/) dataset.
-To use this implementation in your project, add the dependency:
 
+To use this implementation in your project, add the dependency:
 ```xml
 <dependency>
     <groupId>com.vision4j</groupId>
@@ -32,6 +34,7 @@ To use this implementation in your project, add the dependency:
 
 This implementation uses [ND4J](https://nd4j.org/), so you should add one more dependency depending on whether
 you have GPU or not. You can read more about it [here](https://nd4j.org/getstarted).
+
 
 Once you have added the dependency, you can use it like this:
 
@@ -47,10 +50,7 @@ Minimum required memory for the model: 1.355 GB
 Prediction times (in seconds):
 
 | 1080Ti  | K80  | CPU (AMD Ryzen)
-| ------------- |:-------------:|:-------------:| 
-| 0.07 | TODO | 0.73
+| ------------- |:-------------:|:-------------:|
+| 0.070 | TODO | 0.730
 
-TODO:
-* docker / nvidia-docker images
-* AWS AMI
-* Training measurements and estimations
+

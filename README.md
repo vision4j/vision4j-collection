@@ -53,4 +53,37 @@ Prediction times (in seconds):
 | ------------- |:-------------:|:-------------:|
 | 0.070 | TODO | 0.730
 
+#### GRPC classifier
+
+Delegates to another classifier (in another languages) through GRPC call
+
+To use this implementation in your project, add the dependency:
+```xml
+<dependency>
+    <groupId>com.vision4j</groupId>
+    <artifactId>grpc-classifier</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
+This implementation requires a GRPC server running with the classifier. You can use any C++, Python or Lua model. By default, it communicates over localhost and is usually faster than the corresponding DeepLearning4j implementation.
+You can read more about GRPC [here](https://grpc.io/)
+
+Once you have added the dependency, you can use it like this:
+
+```java
+ImageClassifier imageClassifier = new GrpcClassifier();
+Category category = imageClassifier.predict(new File("./cheetah.jpg"));
+String name = category.getCategoryName(); // cheetah
+int index = category.getIndex(); // 293
+```
+
+Minimum required memory for the model: Depends on the model server
+
+Prediction times (in seconds):
+
+| 1080Ti  | K80  | CPU (AMD Ryzen)
+| ------------- |:-------------:|:-------------:|
+| 0.032 | TODO | TODO
+
 

@@ -87,3 +87,16 @@ Prediction times (in seconds):
 | 0.032 | TODO | TODO
 
 
+### Segmentation
+
+By a given image, for each pixel predict what it is. For example, if a model is trained to recognize
+`person`, `table` and `bottle`, when given an image, it is able to correctly predict the boundaries of every category of objects.
+
+| Input        | Output
+| ------------- |:-------------:|
+| ![alt text](img/seans.jpg) | ![alt text](img/segmentation_overlay.jpg)
+
+
+Implementations available for this problem:
+
+

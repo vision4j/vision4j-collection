@@ -55,7 +55,7 @@ Prediction times (in seconds):
 
 #### GRPC classifier
 
-Delegates to another classifier (in another languages) through GRPC call
+Delegates to another classifier (in another languages) through GRPC call.
 
 To use this implementation in your project, add the dependency:
 ```xml

@@ -60,6 +60,7 @@ public class GrpcClassifier implements ImageClassifier {
     //TODO: this could go to utils as well
     private byte[] getBytes(BufferedImage resizedImage) throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        //TODO: this should not be hardcoded
         ImageIO.write(resizedImage, "jpg", baos);
         baos.flush();
         byte[] imageInByte = baos.toByteArray();

@@ -9,6 +9,8 @@ import java.io.InputStream;
  */
 public interface Segmentation {
 
+    Categories getCategories();
+
     /**
      * Predicts on an image read from input stream. Useful for example for APIs
      * @param inputStream the stream from which the image should be read

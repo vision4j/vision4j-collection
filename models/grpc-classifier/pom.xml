@@ -13,7 +13,7 @@
     </parent>
 
     <name>${project.groupId}:${project.artifactId}</name>
-    <description>VGG16 classification model for the classification problem</description>
+    <description>GRPC classification model for the classification problem</description>
     <url>https://vision4j.com/</url>
 
     <licenses>

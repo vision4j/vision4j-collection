@@ -68,6 +68,12 @@ To use this implementation in your project, add the dependency:
 
 This implementation requires a GRPC server running with the classifier. You can use any C++, Python or Lua model. By default, it communicates over localhost and is usually faster than the corresponding DeepLearning4j implementation.
 You can read more about GRPC [here](https://grpc.io/)
+For example, one possible implementation for GPU would be:
+
+```bash
+nvidia-docker run -it -p 50051:50051 vision4j/grpc-keras-vgg16-classification:gpu bash -c 'python /app/classifier_server.py'
+```
+
 
 Once you have added the dependency, you can use it like this:
 
@@ -94,7 +100,7 @@ By a given image, for each pixel predict what it is. For example, if a model is 
 
 | Input        | Output
 | ------------- |:-------------:|
-| ![alt text](img/seans.jpg) | ![alt text](img/segmentation_overlay.jpg)
+| ![alt text](img/seans.jpg) | ![alt text](img/segmentation_overlay.png)
 
 
 Implementations available for this problem:

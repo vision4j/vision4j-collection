@@ -15,3 +15,4 @@ buildNumber.properties
 classification/src/test/java/com/vision4j/classification/ExporingStuff.java
 models/vgg16-deeplearning4j-classifier/src/test/java/com/vision4j/classification/Vgg16DeepLearning4jClassifierExperiments.java
 models/vgg16-deeplearning4j-classifier/src/main/java/com/vision4j/classification/Experiments.java
+*.log

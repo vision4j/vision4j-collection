@@ -100,7 +100,7 @@ By a given image, for each pixel predict what it is. For example, if a model is 
 
 | Input        | Output
 | ------------- |:-------------:|
-| ![alt text](img/seans.jpg) | ![alt text](img/segmentation_overlay.png)
+| ![alt text](img/seans.jpg) | ![alt text](img/segmentation_overlay.jpg)
 
 
 Implementations available for this problem:

@@ -22,10 +22,10 @@ package helloworld;
 
 // The greeting service definition.
 service Segmentation {
-    rpc Segment (Image) returns (SegmentationResult) {}
+    rpc Segment (Image) returns (SegmentationArray) {}
 }
 
-message SegmentationResult {
+message SegmentationArray {
     repeated bytes result = 1;
 }
 

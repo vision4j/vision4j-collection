@@ -69,7 +69,7 @@
         <dependency>
             <groupId>com.vision4j</groupId>
             <artifactId>classification</artifactId>
-            <version>1.2.0</version>
+            <version>1.2.1</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/junit/junit -->
@@ -85,11 +85,6 @@
             <artifactId>log4j-slf4j-impl</artifactId>
             <version>2.10.0</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.vision4j</groupId>
-            <artifactId>vision-utils</artifactId>
-            <version>1.0.0</version>
         </dependency>
     </dependencies>
 

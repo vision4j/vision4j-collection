@@ -4,12 +4,13 @@ import com.google.protobuf.ByteString;
 import com.vision4j.classification.grpc.ClassificationGrpc;
 import com.vision4j.classification.grpc.Image;
 import com.vision4j.classification.grpc.Prediction;
+import com.vision4j.utils.Categories;
+import com.vision4j.utils.Category;
 import com.vision4j.utils.VisionUtils;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -36,7 +37,7 @@ public class GrpcClassifier implements ImageClassifier {
 
     public GrpcClassifier(ManagedChannel channel, String[] categoriesArray, ImageSize imageSize) {
         this.categories = new Categories(IntStream.range(0, categoriesArray.length)
-                .mapToObj(i -> new Category(i, categoriesArray[i]))
+                .mapToObj(i -> new Category(categoriesArray[i], i))
                 .collect(Collectors.toList()));
 
         this.imageSize = imageSize;

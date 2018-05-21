@@ -67,13 +67,18 @@ To use this implementation in your project, add the dependency:
 ```
 
 This implementation requires a GRPC server running with the classifier. You can use any C++, Python or Lua model. By default, it communicates over localhost and is usually faster than the corresponding DeepLearning4j implementation.
-You can read more about GRPC [here](https://grpc.io/)
+You can read more about GRPC [here](https://grpc.io/).
 For example, one possible implementation for GPU would be:
 
 ```bash
 nvidia-docker run -it -p 50051:50051 vision4j/grpc-keras-vgg16-classification:gpu bash -c 'python /app/classifier_server.py'
 ```
 
+ If you don't have a GPU, run the following:
+
+```bash
+docker run -it -p 50051:50051 vision4j/grpc-keras-vgg16-classification bash -c 'python /app/classifier_server.py'
+```
 
 Once you have added the dependency, you can use it like this:
 

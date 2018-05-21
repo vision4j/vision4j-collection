@@ -1,5 +1,7 @@
 package com.vision4j.segmentation;
 
+import com.vision4j.utils.Categories;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;

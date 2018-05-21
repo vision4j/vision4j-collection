@@ -71,13 +71,13 @@ You can read more about GRPC [here](https://grpc.io/).
 For example, one possible implementation for GPU would be:
 
 ```bash
-nvidia-docker run -it -p 50051:50051 vision4j/grpc-keras-vgg16-classification:gpu bash -c 'python /app/classifier_server.py'
+nvidia-docker run -it -p 50051:50051 vision4j/grpc-keras-vgg16-classification:gpu
 ```
 
  If you don't have a GPU, run the following:
 
 ```bash
-docker run -it -p 50051:50051 vision4j/grpc-keras-vgg16-classification bash -c 'python /app/classifier_server.py'
+docker run -it -p 50051:50051 vision4j/grpc-keras-vgg16-classification
 ```
 
 Once you have added the dependency, you can use it like this:

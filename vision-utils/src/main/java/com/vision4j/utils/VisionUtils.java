@@ -8,6 +8,8 @@ import java.io.IOException;
 
 public class VisionUtils {
 
+    private VisionUtils() {}
+
     public static BufferedImage resize(BufferedImage img, int width, int height) {
         BufferedImage resizedImage = new BufferedImage(width, height, img.getType());
         Graphics2D g = resizedImage.createGraphics();

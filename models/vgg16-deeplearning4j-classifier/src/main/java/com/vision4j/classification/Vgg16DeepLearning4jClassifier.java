@@ -1,5 +1,7 @@
 package com.vision4j.classification;
 
+import com.vision4j.utils.Categories;
+import com.vision4j.utils.Category;
 import org.datavec.image.loader.NativeImageLoader;
 import org.deeplearning4j.nn.graph.ComputationGraph;
 import org.deeplearning4j.nn.modelimport.keras.trainedmodels.Utils.ImageNetLabels;
@@ -59,7 +61,7 @@ public class Vgg16DeepLearning4jClassifier implements ImageClassifier {
 
         ArrayList<String> labels = ImageNetLabels.getLabels();
         List<Category> categories = IntStream.range(0, labels.size())
-                .mapToObj(i -> new Category(i, labels.get(i)))
+                .mapToObj(i -> new Category(labels.get(i), i))
                 .collect(Collectors.toList());
 
         this.categories = new Categories(categories);

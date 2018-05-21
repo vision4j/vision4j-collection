@@ -67,7 +67,7 @@ public class GrpcClassifier implements ImageClassifier {
 
     private Category getCategory(BufferedImage originalImage) throws IOException {
         BufferedImage resizedImage = VisionUtils.resize(originalImage, imageSize.getWidth(), imageSize.getHeight());
-        byte[] imageBytes = VisionUtils.getBytes(resizedImage, "jpg");
+        byte[] imageBytes = getBytes(resizedImage);
         ByteString imageData = ByteString.copyFrom(imageBytes);
         Image image = Image.newBuilder()
                 .setWidth(imageSize.getWidth())

@@ -36,6 +36,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * Get metadata about an image just by reading the first few bytes
+ */
 public class SimpleImageInfo {
     private int height;
     private int width;

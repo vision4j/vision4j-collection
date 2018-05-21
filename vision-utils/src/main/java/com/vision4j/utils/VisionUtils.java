@@ -6,6 +6,9 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+/**
+ * Some quick utility methods
+ */
 public class VisionUtils {
 
     private VisionUtils() {}

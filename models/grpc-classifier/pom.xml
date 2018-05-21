@@ -86,6 +86,11 @@
             <version>2.10.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.vision4j</groupId>
+            <artifactId>vision-utils</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>

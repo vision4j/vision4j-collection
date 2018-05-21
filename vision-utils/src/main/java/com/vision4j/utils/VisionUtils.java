@@ -22,7 +22,7 @@ public class VisionUtils {
         return resizedImage;
     }
 
-    public byte[] getBytes(BufferedImage resizedImage, String formatName) throws IOException {
+    public static byte[] getBytes(BufferedImage resizedImage, String formatName) throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ImageIO.write(resizedImage, formatName, baos);
         baos.flush();

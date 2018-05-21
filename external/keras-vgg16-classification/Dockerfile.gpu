@@ -57,3 +57,5 @@ RUN mkdir -p /app/proto
 COPY classification.proto /app/proto
 COPY *.py /app/
 RUN python -m grpc_tools.protoc -I/app/proto --python_out=/app --grpc_python_out=/app /app/proto/classification.proto
+
+CMD ["python", "/app//app/classifier_server.py"]

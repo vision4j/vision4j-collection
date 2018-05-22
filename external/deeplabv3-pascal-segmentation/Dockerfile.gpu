@@ -52,3 +52,7 @@ RUN apt-get update && apt-get install -y wget && wget https://github.com/opencv/
 
 RUN mkdir -p /app/proto
 COPY segmentation.proto /app/proto
+COPY *.py /app/
+RUN python -m grpc_tools.protoc -I/app/proto --python_out=/app --grpc_python_out=/app /app/proto/segmentation.proto
+
+CMD ["python", "/app/segmentation_server.py"]

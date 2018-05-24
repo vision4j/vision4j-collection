@@ -3,25 +3,27 @@ package com.vision4j.segmentation;
 import com.vision4j.utils.Categories;
 import com.vision4j.utils.Category;
 
+import java.awt.image.BufferedImage;
+
 /**
  * A segmentation result is a matrix where for every pixel there is category predicted
  */
 public class SegmentationResult {
 
-    private byte[][] bytes;
+    private BufferedImage bufferedImage;
     private Categories categories;
 
-    public SegmentationResult(byte[][] bytes, Categories categories) {
-        this.bytes = bytes;
+    public SegmentationResult(BufferedImage bufferedImage, Categories categories) {
+        this.bufferedImage = bufferedImage;
         this.categories = categories;
     }
 
-    public byte[][] getBytes() {
-        return bytes;
+    public BufferedImage getBufferedImage() {
+        return bufferedImage;
     }
 
     public Category get(int i, int j) {
-        return categories.get(bytes[i][j]);
+        return categories.get(bufferedImage.getRaster().getSample(i, j, 0));
     }
 
 }

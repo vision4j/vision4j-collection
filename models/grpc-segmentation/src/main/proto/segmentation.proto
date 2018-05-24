@@ -26,7 +26,7 @@ service Segmentation {
 }
 
 message SegmentationArray {
-    repeated bytes result = 1;
+    bytes result = 1;
 }
 
 message Image {

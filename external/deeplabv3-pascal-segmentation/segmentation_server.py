@@ -28,13 +28,11 @@ from deep_lab_model import DeepLabModel
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
-model = DeepLabModel('./deeplabv3_pascal_trainval_2018_01_04.tar.gz')
+model = DeepLabModel('/app/deeplabv3_pascal_trainval_2018_01_04.tar.gz')
 
 def predict(img, original_width_height):
     resized_image, prediction = model.run(img)
     np_prediction = np.asarray(prediction, dtype=np.uint8)
-    print(np.unique(prediction))
-    # resized_prediction = np.asarray(Image.fromarray(np_prediction).resize(original_width_height))
     return Image.fromarray(np_prediction).resize(original_width_height)
 
 
@@ -47,9 +45,7 @@ def read_image_from_response(data, shape):
 class Classificator(segmentation_pb2_grpc.SegmentationServicer):
 
     def Segment(self, request, context):
-        print(request.original_width, request.original_height)
         img = read_image_from_response(request.image_data, (request.width, request.height, request.channels))
-        img.save('received.jpg')
         original_width_height = (request.original_width, request.original_height)
         resized_prediction = predict(img, original_width_height)
         imgByteArr = BytesIO()

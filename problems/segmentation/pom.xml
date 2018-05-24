@@ -4,7 +4,7 @@
 
     <groupId>com.vision4j</groupId>
     <artifactId>segmentation</artifactId>
-    <version>1.2.0</version>
+    <version>1.2.1-SNAPSHOT</version>
 
     <parent>
         <groupId>org.sonatype.oss</groupId>
@@ -36,7 +36,7 @@
         <connection>scm:git:git@github.com:vision4j/vision4j-collection.git</connection>
         <developerConnection>scm:git:git@github.com:vision4j/vision4j-collection.git</developerConnection>
         <url>https://github.com/vision4j/vision4j-collection/tree/master</url>
-      <tag>segmentation-1.2.0</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <properties>

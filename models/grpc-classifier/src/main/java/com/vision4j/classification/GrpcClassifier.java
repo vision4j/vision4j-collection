@@ -12,7 +12,6 @@ import io.grpc.ManagedChannelBuilder;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -44,17 +43,6 @@ public class GrpcClassifier implements ImageClassifier {
         this.classificationStub = ClassificationGrpc.newBlockingStub(channel);
     }
 
-    //TODO: this could go to utils as well
-    private byte[] getBytes(BufferedImage resizedImage) throws IOException {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        //TODO: this should not be hardcoded
-        ImageIO.write(resizedImage, "jpg", baos);
-        baos.flush();
-        byte[] imageInByte = baos.toByteArray();
-        baos.close();
-        return imageInByte;
-    }
-
     @Override
     public Categories getAcceptableCategories() {
         return categories;
@@ -68,7 +56,8 @@ public class GrpcClassifier implements ImageClassifier {
 
     private Category getCategory(BufferedImage originalImage) throws IOException {
         BufferedImage resizedImage = VisionUtils.resize(originalImage, imageSize.getWidth(), imageSize.getHeight());
-        byte[] imageBytes = getBytes(resizedImage);
+        //TODO: this should not be hardcoded
+        byte[] imageBytes = VisionUtils.getBytes(resizedImage, "jpg");
         ByteString imageData = ByteString.copyFrom(imageBytes);
         Image image = Image.newBuilder()
                 .setWidth(imageSize.getWidth())

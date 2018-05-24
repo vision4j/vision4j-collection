@@ -9,6 +9,7 @@ import com.vision4j.utils.Category;
 import com.vision4j.utils.SimpleImageInfo;
 import com.vision4j.utils.VisionUtils;
 import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -24,6 +25,12 @@ public class GrpcSegmentation implements Segmentation {
     private Categories categories;
     private SegmentationGrpc.SegmentationBlockingStub stub;
 
+    public GrpcSegmentation(String[] categoriesArray) {
+        this(ManagedChannelBuilder.forAddress("localhost", 50052)
+                .usePlaintext()
+                .build(), categoriesArray);
+    }
+
     public GrpcSegmentation(ManagedChannel channel, String[] categoriesArray) {
         this.stub = SegmentationGrpc.newBlockingStub(channel);
         this.categories = new Categories(IntStream.range(0, categoriesArray.length)
@@ -35,7 +42,7 @@ public class GrpcSegmentation implements Segmentation {
     public Categories getCategories() {
         return categories;
     }
-
+    
     @Override
     public SegmentationResult segment(InputStream inputStream) throws IOException {
         // this is kind of inefficient. Is not it possible to directly create the ByteString?

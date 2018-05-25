@@ -4,8 +4,8 @@ a list of implementations for different computer vision problems in a plug-and-p
 
 ## Table of Contents
 - [Problems](#problems)
-  - [Image classification](#Image classification)
-  - [Segmentation](#Segmentation)
+  - [Image classification](#image-classification)
+  - [Segmentation](#segmentation)
 
 
 ## Problems

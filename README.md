@@ -1,4 +1,4 @@
-# vision4j-collection
+# Vision4j collection
 Collection of computer vision models, ready to be included in a JVM project. The idea is to maintain
 a list of implementations for different computer vision problems in a plug-and-play format.
 

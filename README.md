@@ -4,14 +4,14 @@ a list of implementations for different computer vision problems in a plug-and-p
 
 ## Table of Contents
 - [Problems](#problems)
-  - [Image classification](#image-classification)
+  - [Classification](#classification)
   - [Segmentation](#segmentation)
 
 
 ## Problems
 
 
-### Image classification
+### Classification
 
 By a given image, find the category that the image belongs to. For example, if a model is trained to recognize
 the categories: `lion`, `cheetah` and `tiger`, when given an image in one of those categories, it can recognize it.

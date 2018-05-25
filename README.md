@@ -28,7 +28,7 @@ To use this implementation in your project, add the dependency:
 <dependency>
     <groupId>com.vision4j</groupId>
     <artifactId>vgg16-deeplearning4j-classifier</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
 </dependency>
 ```
 
@@ -62,11 +62,11 @@ To use this implementation in your project, add the dependency:
 <dependency>
     <groupId>com.vision4j</groupId>
     <artifactId>grpc-classifier</artifactId>
-    <version>1.0.0</version>
+    <version>1.2.0</version>
 </dependency>
 ```
 
-This implementation requires a GRPC server running with the classifier. You can use any C++, Python or Lua model. By default, it communicates over localhost and is usually faster than the corresponding DeepLearning4j implementation.
+This implementation requires a GRPC server running with the classifier. You can use any C++, Python or Lua model. By default, it communicates over localhost on port 50051 and is usually faster than the corresponding DeepLearning4j implementation.
 You can read more about GRPC [here](https://grpc.io/).
 For example, one possible implementation for GPU would be:
 
@@ -109,5 +109,48 @@ By a given image, for each pixel predict what it is. For example, if a model is 
 
 
 Implementations available for this problem:
+
+#### GRPC segmentation
+
+Delegates to another segmentation model (in another languages) through GRPC call.
+
+To use this implementation in your project, add the dependency:
+```xml
+<dependency>
+    <groupId>com.vision4j</groupId>
+    <artifactId>grpc-segmentation</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
+This implementation requires a GRPC segmentation server. You can use any C++, Python or Lua model. By default, it communicates over localhost on port 50052 and is usually faster than the corresponding DeepLearning4j implementation.
+You can read more about GRPC [here](https://grpc.io/).
+For example, one possible implementation for GPU would be:
+
+```bash
+nvidia-docker run -it -p 50051:50051 vision4j/deeplabv3-pascal-voc-segmentation:gpu
+```
+
+ If you don't have a GPU, run the following:
+
+```bash
+docker run -it -p 50051:50051 vision4j/deeplabv3-pascal-voc-segmentation
+```
+
+Once you have added the dependency, you can use it like this:
+
+```java
+Segmentation segmentation = new PascalVOC2012GrpcSegmentation();
+SegmentationResult segmentationResult = segmentation.segment(new File("/home/hvrigazov/demo-images/nn11436439-teaser-story-big.jpg"));
+BufferedImage resultImage = segmentationResult.getBufferedImage();
+```
+
+Minimum required memory for the model: Depends on the model server
+
+Prediction times (in seconds):
+
+| 1080Ti  | K80  | CPU (AMD Ryzen)
+| ------------- |:-------------:|:-------------:|
+| TODO | TODO | TODO
 
 

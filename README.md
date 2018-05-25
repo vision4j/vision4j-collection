@@ -141,7 +141,7 @@ Once you have added the dependency, you can use it like this:
 
 ```java
 Segmentation segmentation = new PascalVOC2012GrpcSegmentation();
-SegmentationResult segmentationResult = segmentation.segment(new File("/home/hvrigazov/demo-images/nn11436439-teaser-story-big.jpg"));
+SegmentationResult segmentationResult = segmentation.segment(new File("./seans.jpg"));
 BufferedImage resultImage = segmentationResult.getBufferedImage();
 ```
 

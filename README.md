@@ -5,7 +5,12 @@ a list of implementations for different computer vision problems in a plug-and-p
 ## Table of Contents
 - [Problems](#problems)
   - [Classification](#classification)
+    - [Pretrained VGG16 on ImageNet using DeepLearning4j](#pretrained-vgg16-on-imagenet-using-deeplearning4j)
+    - [GRPC classifier](#grpc-classifier)
+
   - [Segmentation](#segmentation)
+    - [GRPC segmentation](#grpc-segmentation)
+
 
 
 ## Problems

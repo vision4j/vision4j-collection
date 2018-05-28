@@ -153,9 +153,9 @@ docker run -it -p 50051:50051 vision4j/deeplabv3-pascal-voc-segmentation
 Once you have added the dependency, you can use it like this:
 
 ```java
-Segmentation segmentation = new PascalVOC2012GrpcSegmentation();
-SegmentationResult segmentationResult = segmentation.segment(new File("./seans.jpg"));
-BufferedImage resultImage = segmentationResult.getBufferedImage();
+Segmentation seg = new PascalVOC2012GrpcSegmentation();
+SegmentationResult res = seg.segment(new File("chess.jpg"));
+BufferedImage resultImage = res.getBufferedImage();
 ```
 
 Minimum required memory for the model: Depends on the model server

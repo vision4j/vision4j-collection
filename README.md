@@ -23,9 +23,9 @@ the categories: `lion`, `cheetah` and `tiger`, when given an image in one of tho
 
 | Input        | Output
 | ------------- |:-------------:|
-| ![alt text](img/lion.resized.jpg) | lion
-| ![alt text](img/cheetah.resized.jpg) | cheetah
 | ![alt text](img/tiger.resized.jpg) | tiger
+| ![alt text](img/cheetah.resized.jpg) | cheetah
+| ![alt text](img/lion.resized.jpg) | lion
 
 
 Implementations available for this problem:
@@ -43,7 +43,7 @@ To use this implementation in your project, add the dependency:
 </dependency>
 ```
 
-This implementation uses [ND4J](https://nd4j.org/), so you should add one more dependency depending on whether
+This implementation uses [ND4J](https://nd4j.org/), so you should add one more dependency depending on whether 
 you have GPU or not. You can read more about it [here](https://nd4j.org/getstarted).
 
 
@@ -90,6 +90,7 @@ nvidia-docker run -it -p 50051:50051 vision4j/grpc-keras-vgg16-classification:gp
 ```bash
 docker run -it -p 50051:50051 vision4j/grpc-keras-vgg16-classification
 ```
+
 
 Once you have added the dependency, you can use it like this:
 
@@ -147,6 +148,7 @@ nvidia-docker run -it -p 50051:50051 vision4j/deeplabv3-pascal-voc-segmentation:
 ```bash
 docker run -it -p 50051:50051 vision4j/deeplabv3-pascal-voc-segmentation
 ```
+
 
 Once you have added the dependency, you can use it like this:
 

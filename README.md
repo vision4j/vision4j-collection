@@ -7,9 +7,13 @@ a list of implementations for different computer vision problems in a plug-and-p
   - [Classification](#classification)
     - [Pretrained VGG16 on ImageNet using DeepLearning4j](#pretrained-vgg16-on-imagenet-using-deeplearning4j)
     - [GRPC classifier](#grpc-classifier)
+      - [VGG16 Keras model](#vgg16-keras-model)
+
 
   - [Segmentation](#segmentation)
     - [GRPC segmentation](#grpc-segmentation)
+      - [DeepLabV3](#deeplabv3)
+
 
 
 
@@ -47,7 +51,7 @@ This implementation uses [ND4J](https://nd4j.org/), so you should add one more d
 you have GPU or not. You can read more about it [here](https://nd4j.org/getstarted).
 
 
-Once you have added the dependency, you can use it like this:
+Once you have added the dependency and did the necessary setup, you can use it like this:
 
 ```java
 ImageClassifier imageClassifier = new Vgg16DeepLearning4jClassifier();
@@ -92,7 +96,7 @@ docker run -it -p 50051:50051 vision4j/grpc-keras-vgg16-classification
 ```
 
 
-Once you have added the dependency, you can use it like this:
+Once you have added the dependency and did the necessary setup, you can use it like this:
 
 ```java
 ImageClassifier imageClassifier = new GrpcClassifier();
@@ -101,13 +105,8 @@ String name = category.getCategoryName(); // cheetah
 int index = category.getIndex(); // 293
 ```
 
-Minimum required memory for the model: Depends on the model server
+The memory requirements and the prediction times depend on the model that is being delegated to.
 
-Prediction times (in seconds):
-
-| 1080Ti  | K80  | CPU (AMD Ryzen)
-| ------------- |:-------------:|:-------------:|
-| 0.032 | TODO | TODO
 
 
 ### Segmentation
@@ -150,7 +149,7 @@ docker run -it -p 50051:50051 vision4j/deeplabv3-pascal-voc-segmentation
 ```
 
 
-Once you have added the dependency, you can use it like this:
+Once you have added the dependency and did the necessary setup, you can use it like this:
 
 ```java
 Segmentation seg = new PascalVOC2012GrpcSegmentation();
@@ -158,12 +157,7 @@ SegmentationResult res = seg.segment(new File("chess.jpg"));
 BufferedImage resultImage = res.getBufferedImage();
 ```
 
-Minimum required memory for the model: Depends on the model server
+The memory requirements and the prediction times depend on the model that is being delegated to.
 
-Prediction times (in seconds):
-
-| 1080Ti  | K80  | CPU (AMD Ryzen)
-| ------------- |:-------------:|:-------------:|
-| TODO | TODO | TODO
 
 

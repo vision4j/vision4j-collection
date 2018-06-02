@@ -96,6 +96,19 @@ docker run -it -p 50051:50051 vision4j/grpc-keras-vgg16-classification
 ```
 
 
+#### VGG16 Keras model
+If you have a GPU:
+
+```bash
+nvidia-docker run -it -p 50051:50051 vision4j/grpc-keras-vgg16-classification:gpu
+```
+
+If you have only a CPU:
+
+```bash
+docker run -it -p 50051:50051 vision4j/grpc-keras-vgg16-classification
+```
+
 Once you have added the dependency and did the necessary setup, you can use it like this:
 
 ```java
@@ -148,6 +161,19 @@ nvidia-docker run -it -p 50051:50051 vision4j/deeplabv3-pascal-voc-segmentation:
 docker run -it -p 50051:50051 vision4j/deeplabv3-pascal-voc-segmentation
 ```
 
+
+#### DeepLabV3
+If you have a GPU:
+
+```bash
+nvidia-docker run -it -p 50051:50051 vision4j/deeplabv3-pascal-voc-segmentation:gpu
+```
+
+If you have only a CPU:
+
+```bash
+docker run -it -p 50051:50051 vision4j/deeplabv3-pascal-voc-segmentation
+```
 
 Once you have added the dependency and did the necessary setup, you can use it like this:
 

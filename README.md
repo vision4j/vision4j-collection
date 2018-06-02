@@ -51,6 +51,7 @@ This implementation uses [ND4J](https://nd4j.org/), so you should add one more d
 you have GPU or not. You can read more about it [here](https://nd4j.org/getstarted).
 
 
+
 Once you have added the dependency and did the necessary setup, you can use it like this:
 
 ```java
@@ -108,6 +109,7 @@ If you have only a CPU:
 ```bash
 docker run -it -p 50051:50051 vision4j/grpc-keras-vgg16-classification
 ```
+---
 
 Once you have added the dependency and started the external model, you can use it like this:
 
@@ -174,6 +176,7 @@ If you have only a CPU:
 ```bash
 docker run -it -p 50051:50051 vision4j/deeplabv3-pascal-voc-segmentation
 ```
+---
 
 Once you have added the dependency and started the external model, you can use it like this:
 

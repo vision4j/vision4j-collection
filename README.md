@@ -84,18 +84,6 @@ To use this implementation in your project, add the dependency:
 
 This implementation requires a GRPC server running with the classifier. You can use any C++, Python or Lua model. By default, it communicates over localhost on port 50051 and is usually faster than the corresponding DeepLearning4j implementation.
 You can read more about GRPC [here](https://grpc.io/).
-For example, one possible implementation for GPU would be:
-
-```bash
-nvidia-docker run -it -p 50051:50051 vision4j/grpc-keras-vgg16-classification:gpu
-```
-
- If you don't have a GPU, run the following:
-
-```bash
-docker run -it -p 50051:50051 vision4j/grpc-keras-vgg16-classification
-```
-
 
 #### VGG16 Keras model
 If you have a GPU:
@@ -151,18 +139,6 @@ To use this implementation in your project, add the dependency:
 
 This implementation requires a GRPC segmentation server. You can use any C++, Python or Lua model. By default, it communicates over localhost on port 50052 and is usually faster than the corresponding DeepLearning4j implementation.
 You can read more about GRPC [here](https://grpc.io/).
-For example, one possible implementation for GPU would be:
-
-```bash
-nvidia-docker run -it -p 50051:50051 vision4j/deeplabv3-pascal-voc-segmentation:gpu
-```
-
- If you don't have a GPU, run the following:
-
-```bash
-docker run -it -p 50051:50051 vision4j/deeplabv3-pascal-voc-segmentation
-```
-
 
 #### DeepLabV3
 If you have a GPU:

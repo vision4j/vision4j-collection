@@ -109,7 +109,7 @@ If you have only a CPU:
 docker run -it -p 50051:50051 vision4j/grpc-keras-vgg16-classification
 ```
 
-Once you have added the dependency and did the necessary setup, you can use it like this:
+Once you have added the dependency and started the external model, you can use it like this:
 
 ```java
 ImageClassifier imageClassifier = new GrpcClassifier();
@@ -175,7 +175,7 @@ If you have only a CPU:
 docker run -it -p 50051:50051 vision4j/deeplabv3-pascal-voc-segmentation
 ```
 
-Once you have added the dependency and did the necessary setup, you can use it like this:
+Once you have added the dependency and started the external model, you can use it like this:
 
 ```java
 Segmentation seg = new PascalVOC2012GrpcSegmentation();

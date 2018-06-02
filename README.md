@@ -65,9 +65,9 @@ Minimum required memory for the model: 1.355 GB
 
 Prediction times (in seconds):
 
-| 1080Ti  | K80  | CPU (AMD Ryzen)
-| ------------- |:-------------:|:-------------:|
-| 0.070 | TODO | 0.730
+Image size | 1080Ti  | K80  | CPU (AMD Ryzen)
+-------------| ------------- |:-------------:|:-------------:|
+224x224| 0.070 | TODO | 0.730
 
 #### GRPC classifier
 

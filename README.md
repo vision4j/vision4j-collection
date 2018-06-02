@@ -98,6 +98,14 @@ If you have only a CPU:
 ```bash
 docker run -it -p 50051:50051 vision4j/grpc-keras-vgg16-classification
 ```
+
+Minimum required memory for the model: TODO
+
+Prediction times (in seconds):
+
+Image size | 1080Ti  | K80  | CPU (AMD Ryzen)
+-------------| ------------- |:-------------:|:-------------:|
+TODO| TODO | TODO | TODO
 ---
 
 Once you have added the dependency and started the external model, you can use it like this:
@@ -154,6 +162,14 @@ If you have only a CPU:
 ```bash
 docker run -it -p 50052:50052 vision4j/deeplabv3-pascal-voc-segmentation
 ```
+
+Minimum required memory for the model: TODO
+
+Prediction times (in seconds):
+
+Image size | 1080Ti  | K80  | CPU (AMD Ryzen)
+-------------| ------------- |:-------------:|:-------------:|
+TODO| TODO | TODO | TODO
 ---
 
 Once you have added the dependency and started the external model, you can use it like this:

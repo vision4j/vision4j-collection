@@ -84,6 +84,7 @@ To use this implementation in your project, add the dependency:
 
 This implementation requires a GRPC server running with the classifier. You can use any C++, Python or Lua model. By default, it communicates over localhost on port 50051 and is usually faster than the corresponding DeepLearning4j implementation.
 You can read more about GRPC [here](https://grpc.io/).
+This model can be combined with any of the following models:
 
 #### VGG16 Keras model
 If you have a GPU:
@@ -139,6 +140,7 @@ To use this implementation in your project, add the dependency:
 
 This implementation requires a GRPC segmentation server. You can use any C++, Python or Lua model. By default, it communicates over localhost on port 50052 and is usually faster than the corresponding DeepLearning4j implementation.
 You can read more about GRPC [here](https://grpc.io/).
+This model can be combined with any of the following models:
 
 #### DeepLabV3
 If you have a GPU:

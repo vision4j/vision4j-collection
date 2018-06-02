@@ -144,13 +144,13 @@ You can read more about GRPC [here](https://grpc.io/).
 If you have a GPU:
 
 ```bash
-nvidia-docker run -it -p 50051:50051 vision4j/deeplabv3-pascal-voc-segmentation:gpu
+nvidia-docker run -it -p 50052:50052 vision4j/deeplabv3-pascal-voc-segmentation:gpu
 ```
 
 If you have only a CPU:
 
 ```bash
-docker run -it -p 50051:50051 vision4j/deeplabv3-pascal-voc-segmentation
+docker run -it -p 50052:50052 vision4j/deeplabv3-pascal-voc-segmentation
 ```
 ---
 

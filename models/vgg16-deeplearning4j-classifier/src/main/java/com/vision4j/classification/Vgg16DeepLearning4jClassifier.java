@@ -2,6 +2,8 @@ package com.vision4j.classification;
 
 import com.vision4j.utils.Categories;
 import com.vision4j.utils.Category;
+import com.vision4j.utils.Constants;
+import com.vision4j.utils.ImageSize;
 import org.datavec.image.loader.NativeImageLoader;
 import org.deeplearning4j.nn.graph.ComputationGraph;
 import org.deeplearning4j.nn.modelimport.keras.trainedmodels.Utils.ImageNetLabels;
@@ -23,7 +25,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -60,11 +61,10 @@ public class Vgg16DeepLearning4jClassifier implements ImageClassifier {
         this.imageLoader = new NativeImageLoader(imageSize.getHeight(), imageSize.getWidth(), imageSize.channels());
 
         ArrayList<String> labels = ImageNetLabels.getLabels();
-        List<Category> categories = IntStream.range(0, labels.size())
-                .mapToObj(i -> new Category(labels.get(i), i))
-                .collect(Collectors.toList());
-
-        this.categories = new Categories(categories);
+        String[] categoriesArray = Constants.IMAGENET_CATEGORIES;
+        this.categories = new Categories(IntStream.range(0, categoriesArray.length)
+                .mapToObj(i -> new Category(categoriesArray[i], i))
+                .collect(Collectors.toList()));
     }
 
     private File downloadComputationGraph() throws IOException {

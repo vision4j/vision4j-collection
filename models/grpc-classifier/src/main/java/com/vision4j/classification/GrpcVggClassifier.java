@@ -2,7 +2,7 @@ package com.vision4j.classification;
 
 import io.grpc.ManagedChannel;
 
-import static com.vision4j.classification.Constants.VGG16_IMAGE_SIZE;
+import static com.vision4j.utils.Constants.VGG16_IMAGE_SIZE;
 
 public class GrpcVggClassifier extends GrpcImageNetClassifier {
 

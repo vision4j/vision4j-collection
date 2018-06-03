@@ -1,6 +1,9 @@
 package com.vision4j.classification;
 
+import com.vision4j.utils.ImageSize;
 import io.grpc.ManagedChannel;
+
+import static com.vision4j.utils.Constants.IMAGENET_CATEGORIES;
 
 
 /**

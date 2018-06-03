@@ -6,6 +6,7 @@ import com.vision4j.classification.grpc.Image;
 import com.vision4j.classification.grpc.Prediction;
 import com.vision4j.utils.Categories;
 import com.vision4j.utils.Category;
+import com.vision4j.utils.ImageSize;
 import com.vision4j.utils.VisionUtils;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;

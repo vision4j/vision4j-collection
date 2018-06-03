@@ -1,4 +1,4 @@
-package com.vision4j.classification;
+package com.vision4j.utils;
 
 public class ImageSize {
 

@@ -2,7 +2,6 @@ package com.vision4j.classification;
 
 import io.grpc.ManagedChannel;
 
-import static com.vision4j.classification.Constants.IMAGENET_CATEGORIES;
 
 /**
  * A classifier trained on imagenet called through GRPC

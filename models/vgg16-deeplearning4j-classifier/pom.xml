@@ -32,12 +32,12 @@
         <connection>scm:git:git@github.com:vision4j/vision4j-collection.git</connection>
         <developerConnection>scm:git:git@github.com:vision4j/vision4j-collection.git</developerConnection>
         <url>https://github.com/vision4j/vision4j-collection/tree/master</url>
-      <tag>HEAD</tag>
+      <tag>vgg16-deeplearning4j-classifier-1.3.0</tag>
   </scm>
 
     <groupId>com.vision4j</groupId>
     <artifactId>vgg16-deeplearning4j-classifier</artifactId>
-    <version>1.2.1-SNAPSHOT</version>
+    <version>1.3.0</version>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>

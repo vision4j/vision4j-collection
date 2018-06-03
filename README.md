@@ -7,12 +7,12 @@ a list of implementations for different computer vision problems in a plug-and-p
   - [Classification](#classification)
     - [Pretrained VGG16 on ImageNet using DeepLearning4j](#pretrained-vgg16-on-imagenet-using-deeplearning4j)
     - [GRPC classifier](#grpc-classifier)
-      - [VGG16 Keras model](#vgg16-keras-model)
+      - [Keras VGG16 classification](#keras-vgg16-classification)
 
 
   - [Segmentation](#segmentation)
     - [GRPC segmentation](#grpc-segmentation)
-      - [DeepLabV3](#deeplabv3)
+      - [DeepLabV3 Pascal VOC segmentation](#deeplabv3-pascal-voc-segmentation)
 
 
 
@@ -86,7 +86,7 @@ This implementation requires a GRPC server running with the classifier. You can 
 You can read more about GRPC [here](https://grpc.io/).
 This model can be combined with any of the following models:
 
-#### VGG16 Keras model
+#### Keras VGG16 classification
 If you have a GPU:
 
 ```bash
@@ -150,7 +150,7 @@ This implementation requires a GRPC segmentation server. You can use any C++, Py
 You can read more about GRPC [here](https://grpc.io/).
 This model can be combined with any of the following models:
 
-#### DeepLabV3
+#### DeepLabV3 Pascal VOC segmentation
 If you have a GPU:
 
 ```bash

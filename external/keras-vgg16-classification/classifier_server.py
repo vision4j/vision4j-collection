@@ -6,6 +6,8 @@ import numpy as np
 import cv2
 from PIL import Image
 from classifier import Vgg16Classifier
+import sys
+import subprocess
 import classification_pb2
 import classification_pb2_grpc
 
@@ -32,6 +34,11 @@ def serve():
     classification_pb2_grpc.add_ClassificationServicer_to_server(Classificator(), server)
     server.add_insecure_port('[::]:50051')
     server.start()
+    try:
+        callback_command = sys.argv[1]
+        subprocess.call(callback_command, shell=True)
+    except:
+        pass
     try:
         while True:
             time.sleep(_ONE_DAY_IN_SECONDS)

@@ -22,6 +22,8 @@ import cv2
 from PIL import Image
 import segmentation_pb2
 import segmentation_pb2_grpc
+import sys
+import subprocess
 
 from io import BytesIO
 from deep_lab_model import DeepLabModel
@@ -60,6 +62,13 @@ def serve():
     segmentation_pb2_grpc.add_SegmentationServicer_to_server(Classificator(), server)
     server.add_insecure_port('[::]:50052')
     server.start()
+
+    try:
+        callback_command = sys.argv[1]
+        subprocess.call(callback_command, shell=True)
+    except:
+        pass
+
     try:
         while True:
             time.sleep(_ONE_DAY_IN_SECONDS)

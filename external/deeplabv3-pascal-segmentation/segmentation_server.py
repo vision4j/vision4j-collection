@@ -44,7 +44,7 @@ def read_image_from_response(data, shape):
     return Image.fromarray(img)
 
 
-class Classificator(segmentation_pb2_grpc.SegmentationServicer):
+class Segmentation(segmentation_pb2_grpc.SegmentationServicer):
 
     def Segment(self, request, context):
         img = read_image_from_response(request.image_data, (request.width, request.height, request.channels))
@@ -59,7 +59,7 @@ class Classificator(segmentation_pb2_grpc.SegmentationServicer):
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=1))
-    segmentation_pb2_grpc.add_SegmentationServicer_to_server(Classificator(), server)
+    segmentation_pb2_grpc.add_SegmentationServicer_to_server(Segmentation(), server)
     server.add_insecure_port('[::]:50052')
     server.start()
 

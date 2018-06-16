@@ -24,11 +24,6 @@ class Classificator(classification_pb2_grpc.ClassificationServicer):
         return classification_pb2.Prediction(index=result)
 
 
-    def SendImage(self, request, context):
-        result = model.predict(request)
-        return helloworld_pb2.HelloReply(message=str(result))
-
-
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=1))
     classification_pb2_grpc.add_ClassificationServicer_to_server(Classificator(), server)

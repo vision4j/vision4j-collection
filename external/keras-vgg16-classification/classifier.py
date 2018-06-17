@@ -8,7 +8,7 @@ import cv2
 import tensorflow as tf
 from keras.backend.tensorflow_backend import set_session
 
-def read_image_from_response(data, shape):
+def deserialize(data, shape):
     nparr = np.fromstring(data, np.uint8)
     img = cv2.cvtColor(cv2.imdecode(nparr, cv2.IMREAD_COLOR), cv2.COLOR_BGR2RGB).reshape(shape).astype(np.float64)
     return img
@@ -21,7 +21,7 @@ class Vgg16Classifier(object):
         self.model._make_predict_function()
 
     def predict(self, request):
-        img = read_image_from_response(request.image_data, (request.width, request.height, request.channels))
+        img = deserialize(request.image_data, (request.width, request.height, request.channels))
         img = np.expand_dims(preprocess_input(img), axis=0)
         out = self.model.predict(img)
         idx = np.argmax(out)

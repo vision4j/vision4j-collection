@@ -25,36 +25,17 @@ import segmentation_pb2_grpc
 import sys
 import subprocess
 
-from io import BytesIO
 from deep_lab_model import DeepLabModel
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
 model = DeepLabModel('/app/deeplabv3_pascal_trainval_2018_01_04.tar.gz')
 
-def predict(img, original_width_height):
-    resized_image, prediction = model.run(img)
-    np_prediction = np.asarray(prediction, dtype=np.uint8)
-    return Image.fromarray(np_prediction).resize(original_width_height)
-
-
-def read_image_from_response(data, shape):
-    nparr = np.fromstring(data, np.uint8)
-    img = cv2.cvtColor(cv2.imdecode(nparr, cv2.IMREAD_COLOR), cv2.COLOR_BGR2RGB)
-    return Image.fromarray(img)
-
 
 class Segmentation(segmentation_pb2_grpc.SegmentationServicer):
 
     def Segment(self, request, context):
-        img = read_image_from_response(request.image_data, (request.width, request.height, request.channels))
-        original_width_height = (request.original_width, request.original_height)
-        resized_prediction = predict(img, original_width_height)
-        imgByteArr = BytesIO()
-        resized_prediction.save(imgByteArr, format='png')
-        imgByteArr = imgByteArr.getvalue()
-        return segmentation_pb2.SegmentationArray(result=imgByteArr)
-
+        return model.predict_request(request)
 
 
 def serve():

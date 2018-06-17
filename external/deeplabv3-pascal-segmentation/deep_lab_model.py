@@ -2,10 +2,25 @@ import os
 import tarfile
 
 import numpy as np
+import cv2
 import tensorflow as tf
 from PIL import Image
+from io import BytesIO
+import segmentation_pb2
+
+
 
 _FROZEN_GRAPH_NAME = 'frozen_inference_graph'
+
+
+def deserialize(data, shape):
+    nparr = np.fromstring(data, np.uint8)
+    img = cv2.cvtColor(cv2.imdecode(nparr, cv2.IMREAD_COLOR), cv2.COLOR_BGR2RGB)
+    return Image.fromarray(img)
+
+
+def serialize(result):
+    return segmentation_pb2.SegmentationArray(result=result)
 
 
 class DeepLabModel(object):
@@ -57,3 +72,17 @@ class DeepLabModel(object):
             feed_dict={self.INPUT_TENSOR_NAME: [np.asarray(resized_image)]})
         seg_map = batch_seg_map[0]
         return resized_image, seg_map
+
+    def predict(self, img, original_width_height):
+        resized_image, prediction = self.run(img)
+        np_prediction = np.asarray(prediction, dtype=np.uint8)
+        return Image.fromarray(np_prediction).resize(original_width_height)
+
+    def predict_request(self, request):
+        img = deserialize(request.image_data, (request.width, request.height, request.channels))
+        original_width_height = (request.original_width, request.original_height)
+        resized_prediction = self.predict(img, original_width_height)
+        imgByteArr = BytesIO()
+        resized_prediction.save(imgByteArr, format='png')
+        imgByteArr = imgByteArr.getvalue()
+        return serialize(imgByteArr)

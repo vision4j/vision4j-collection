@@ -78,11 +78,16 @@ class DeepLabModel(object):
         np_prediction = np.asarray(prediction, dtype=np.uint8)
         return Image.fromarray(np_prediction).resize(original_width_height)
 
-    def predict_request(self, request):
-        img = deserialize(request.image_data, (request.width, request.height, request.channels))
+    def predict_on_deserialized(self, request, deserialized):
+        img = deserialized
         original_width_height = (request.original_width, request.original_height)
         resized_prediction = self.predict(img, original_width_height)
         imgByteArr = BytesIO()
         resized_prediction.save(imgByteArr, format='png')
         imgByteArr = imgByteArr.getvalue()
-        return serialize(imgByteArr)
+        return imgByteArr
+
+    def predict_request(self, request):
+        deserialized = deserialize(request.image_data, (request.width, request.height, request.channels))
+        prediction = self.predict_on_deserialized(request, deserialized)
+        return serialize(prediction)

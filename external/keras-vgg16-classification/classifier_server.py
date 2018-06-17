@@ -20,8 +20,7 @@ model = Vgg16Classifier()
 class Classificator(classification_pb2_grpc.ClassificationServicer):
 
     def Predict(self, request, context):
-        result = model.predict(request)
-        return classification_pb2.Prediction(index=result)
+        return model.predict_request(request)
 
 
 def serve():

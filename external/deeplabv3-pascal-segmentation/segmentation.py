@@ -73,15 +73,15 @@ class DeepLabModel(object):
         seg_map = batch_seg_map[0]
         return resized_image, seg_map
 
-    def predict(self, img, original_width_height):
+    def segment(self, img, original_width_height):
         resized_image, prediction = self.run(img)
         np_prediction = np.asarray(prediction, dtype=np.uint8)
         return Image.fromarray(np_prediction).resize(original_width_height)
 
-    def predict_on_deserialized(self, request, deserialized):
+    def segment_on_deserialized(self, request, deserialized):
         img = deserialized
         original_width_height = (request.original_width, request.original_height)
-        resized_prediction = self.predict(img, original_width_height)
+        resized_prediction = self.segment(img, original_width_height)
         imgByteArr = BytesIO()
         resized_prediction.save(imgByteArr, format='png')
         imgByteArr = imgByteArr.getvalue()
@@ -89,5 +89,5 @@ class DeepLabModel(object):
 
     def predict_request(self, request):
         deserialized = deserialize(request.image_data, (request.width, request.height, request.channels))
-        prediction = self.predict_on_deserialized(request, deserialized)
+        prediction = self.segment_on_deserialized(request, deserialized)
         return serialize(prediction)

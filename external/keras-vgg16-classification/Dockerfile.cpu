@@ -1,8 +1,5 @@
 FROM tensorflow/tensorflow:1.8.0
 
-# grpc is already installed
-RUN pip install keras==2.1.6 grpcio-tools==1.12.0
-
 RUN apt-get update
 
 RUN apt-get install -y \
@@ -24,7 +21,10 @@ RUN apt-get install -y \
         libhdf5-dev \
         libpq-dev
 
+RUN pip install keras==2.1.6 grpcio-tools==1.12.0 
+
 WORKDIR /
+
 RUN apt-get update && apt-get install -y wget && wget https://github.com/opencv/opencv/archive/3.4.1.zip \
 	&& unzip 3.4.1.zip \
 	&& mkdir /opencv-3.4.1/cmake_binary \
@@ -50,12 +50,14 @@ RUN apt-get update && apt-get install -y wget && wget https://github.com/opencv/
 	&& rm /3.4.1.zip \
 	&& rm -r /opencv-3.4.1
 
-# Download Keras model
+
 RUN mkdir -p /root/.keras/models && wget https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels.h5 -O /root/.keras/models/vgg16_weights_tf_dim_ordering_tf_kernels.h5
+
+
 
 RUN mkdir -p /app/proto
 COPY classification.proto /app/proto
 COPY *.py /app/
 RUN python -m grpc_tools.protoc -I/app/proto --python_out=/app --grpc_python_out=/app /app/proto/classification.proto
 
-CMD ["python", "/app/classifier_server.py"]
+CMD ["python", "/app/classification_server.py"]

@@ -1,8 +1,5 @@
 FROM tensorflow/tensorflow:1.8.0
 
-# grpc is already installed
-RUN pip install keras==2.1.6 grpcio-tools==1.12.0
-
 RUN apt-get update
 
 RUN apt-get install -y \
@@ -24,7 +21,10 @@ RUN apt-get install -y \
         libhdf5-dev \
         libpq-dev
 
+RUN pip install grpcio-tools==1.12.0 
+
 WORKDIR /
+
 RUN apt-get update && apt-get install -y wget && wget https://github.com/opencv/opencv/archive/3.4.1.zip \
 	&& unzip 3.4.1.zip \
 	&& mkdir /opencv-3.4.1/cmake_binary \
@@ -50,8 +50,11 @@ RUN apt-get update && apt-get install -y wget && wget https://github.com/opencv/
 	&& rm /3.4.1.zip \
 	&& rm -r /opencv-3.4.1
 
-RUN mkdir -p /app/proto
+
 RUN wget http://download.tensorflow.org/models/deeplabv3_pascal_trainval_2018_01_04.tar.gz -O /app/deeplabv3_pascal_trainval_2018_01_04.tar.gz
+
+
+RUN mkdir -p /app/proto
 COPY segmentation.proto /app/proto
 COPY *.py /app/
 RUN python -m grpc_tools.protoc -I/app/proto --python_out=/app --grpc_python_out=/app /app/proto/segmentation.proto

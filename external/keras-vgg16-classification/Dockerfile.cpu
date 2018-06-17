@@ -51,6 +51,7 @@ RUN apt-get update && apt-get install -y wget && wget https://github.com/opencv/
 	&& rm -r /opencv-3.4.1
 
 
+RUN mkdir -p /app
 RUN mkdir -p /root/.keras/models && wget https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels.h5 -O /root/.keras/models/vgg16_weights_tf_dim_ordering_tf_kernels.h5
 
 

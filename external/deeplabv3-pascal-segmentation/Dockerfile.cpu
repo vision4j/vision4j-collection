@@ -51,6 +51,7 @@ RUN apt-get update && apt-get install -y wget && wget https://github.com/opencv/
 	&& rm -r /opencv-3.4.1
 
 
+RUN mkdir -p /app
 RUN wget http://download.tensorflow.org/models/deeplabv3_pascal_trainval_2018_01_04.tar.gz -O /app/deeplabv3_pascal_trainval_2018_01_04.tar.gz
 
 

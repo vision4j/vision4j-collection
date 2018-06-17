@@ -87,7 +87,7 @@ class DeepLabModel(object):
         imgByteArr = imgByteArr.getvalue()
         return imgByteArr
 
-    def predict_request(self, request):
+    def segment_request(self, request):
         deserialized = deserialize(request.image_data, (request.width, request.height, request.channels))
         prediction = self.segment_on_deserialized(request, deserialized)
         return serialize(prediction)

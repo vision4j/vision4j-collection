@@ -5,7 +5,7 @@ import grpc
 import numpy as np
 import cv2
 from PIL import Image
-from classifier import Vgg16Classifier
+from classification import Vgg16Classifier
 import sys
 import subprocess
 import classification_pb2

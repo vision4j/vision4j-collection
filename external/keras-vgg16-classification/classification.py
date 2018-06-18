@@ -10,7 +10,9 @@ from keras.backend.tensorflow_backend import set_session
 import classification_pb2
 
 
-def deserialize(data, shape):
+def deserialize(request):
+    data = request.image_data
+    shape = (request.width, request.height, request.channels)
     nparr = np.fromstring(data, np.uint8)
     img = cv2.cvtColor(cv2.imdecode(nparr, cv2.IMREAD_COLOR), cv2.COLOR_BGR2RGB).reshape(shape).astype(np.float64)
     return img
@@ -25,15 +27,18 @@ class Vgg16Classifier(object):
         self.model = VGG16()
         self.model._make_predict_function()
 
+    def predict(self, img):
+        return self.model.predict(img)
+
     def predict_on_deserialized(self, request, deserialized):
         img = deserialized
         img = np.expand_dims(preprocess_input(img), axis=0) 
-        out = self.model.predict(img)
+        out = self.predict(img)
         idx = np.argmax(out)
         return idx
 
     def predict_request(self, request):
-        deserialized = deserialize(request.image_data, (request.width, request.height, request.channels))
+        deserialized = deserialize(request)
         prediction = self.predict_on_deserialized(request, deserialized)
         return serialize(prediction)
 

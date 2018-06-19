@@ -43,7 +43,7 @@ To use this implementation in your project, add the dependency:
 <dependency>
     <groupId>com.vision4j</groupId>
     <artifactId>vgg16-deeplearning4j-classifier</artifactId>
-    <version>1.2.0</version>
+    <version>1.3.0</version>
 </dependency>
 ```
 
@@ -78,7 +78,7 @@ To use this implementation in your project, add the dependency:
 <dependency>
     <groupId>com.vision4j</groupId>
     <artifactId>grpc-classifier</artifactId>
-    <version>1.2.0</version>
+    <version>1.3.0</version>
 </dependency>
 ```
 

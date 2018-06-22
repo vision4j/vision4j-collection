@@ -52,7 +52,7 @@ RUN apt-get update && apt-get install -y wget && wget https://github.com/opencv/
 
 RUN pip3 install --upgrade cython
 RUN wget https://s3.amazonaws.com/vision4j/problems/external_models/mask-rcnn-segmentation/requirements.txt -O /tmp/requirements.txt
-RUN pip3 install -r /tmp/requirements.txt 
+RUN pip3 install -r /tmp/requirements.txt
 
 RUN mkdir -p /app
 

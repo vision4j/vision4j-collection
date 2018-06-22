@@ -13,7 +13,7 @@ a list of implementations for different computer vision problems in a plug-and-p
   - [Segmentation](#segmentation)
     - [GRPC segmentation](#grpc-segmentation)
       - [DeepLabV3 Pascal VOC segmentation](#deeplabv3-pascal-voc-segmentation)
-      - [Mask R-CNN pretrained on Coco dataset](#mask-rcnn-segmentation)
+      - [Mask R-CNN pretrained on Coco dataset](#mask-r-cnn-pretrained-on-coco-dataset)
 
 
 

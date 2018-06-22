@@ -56,21 +56,6 @@ class MaskRCNNSegmentation(object):
         self.model = modellib.MaskRCNN(mode="inference", model_dir='.', config=config)
         self.model.load_weights(weights_path, by_name=True)
         self.model.keras_model._make_predict_function()
-        self.class_names = ['BG', 'person', 'bicycle', 'car', 'motorcycle', 'airplane',
-               'bus', 'train', 'truck', 'boat', 'traffic light',
-               'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird',
-               'cat', 'dog', 'horse', 'sheep', 'cow', 'elephant', 'bear',
-               'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie',
-               'suitcase', 'frisbee', 'skis', 'snowboard', 'sports ball',
-               'kite', 'baseball bat', 'baseball glove', 'skateboard',
-               'surfboard', 'tennis racket', 'bottle', 'wine glass', 'cup',
-               'fork', 'knife', 'spoon', 'bowl', 'banana', 'apple',
-               'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza',
-               'donut', 'cake', 'chair', 'couch', 'potted plant', 'bed',
-               'dining table', 'toilet', 'tv', 'laptop', 'mouse', 'remote',
-               'keyboard', 'cell phone', 'microwave', 'oven', 'toaster',
-               'sink', 'refrigerator', 'book', 'clock', 'vase', 'scissors',
-               'teddy bear', 'hair drier', 'toothbrush']
 
 
     def segment(self, img):
@@ -85,15 +70,6 @@ class MaskRCNNSegmentation(object):
         class_ids = r['class_ids'].astype(np.uint8)
         res = (masks * class_ids)
         converted = np.sum(res, axis=2, dtype=np.uint8)
-        unique_with_count, counts = np.unique(converted, return_counts=True)
-        print('Classes found: ' + str(unique_with_count))
-        for i in range(len(unique_with_count)):
-            class_idx = unique_with_count[i]
-            class_name = self.class_names[class_idx]
-            class_counts = counts[i]
-            print(class_name, class_counts)
-
-
         converted_pil_image = Image.fromarray(converted)
         imgByteArr = BytesIO()
         converted_pil_image.save(imgByteArr, format='png')

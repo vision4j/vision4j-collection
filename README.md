@@ -13,6 +13,7 @@ a list of implementations for different computer vision problems in a plug-and-p
   - [Segmentation](#segmentation)
     - [GRPC segmentation](#grpc-segmentation)
       - [DeepLabV3 Pascal VOC segmentation](#deeplabv3-pascal-voc-segmentation)
+      - [Mask R-CNN pretrained on Coco dataset](#mask-rcnn-segmentation)
 
 
 
@@ -161,6 +162,27 @@ If you have only a CPU:
 
 ```bash
 docker run -it -p 50052:50052 vision4j/deeplabv3-pascal-voc-segmentation
+```
+
+Minimum required memory for the model: TODO
+
+Prediction times (in seconds):
+
+Image size | 1080Ti  | K80  | CPU (AMD Ryzen)
+-------------| ------------- |:-------------:|:-------------:|
+TODO| TODO | TODO | TODO
+---
+#### Mask R-CNN pretrained on Coco dataset
+If you have a GPU:
+
+```bash
+nvidia-docker run -it -p 50053:50053 vision4j/mask-rcnn-segmentation:gpu
+```
+
+If you have only a CPU:
+
+```bash
+docker run -it -p 50053:50053 vision4j/mask-rcnn-segmentation
 ```
 
 Minimum required memory for the model: TODO

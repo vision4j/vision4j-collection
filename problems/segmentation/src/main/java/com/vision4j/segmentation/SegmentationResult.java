@@ -22,6 +22,10 @@ public class SegmentationResult {
         return bufferedImage;
     }
 
+    public Categories getCategories() {
+        return categories;
+    }
+
     public Category get(int i, int j) {
         return categories.get(bufferedImage.getRaster().getSample(i, j, 0));
     }

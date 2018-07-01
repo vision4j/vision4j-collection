@@ -4,9 +4,12 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URL;
 
 /**
  * Some quick utility methods
@@ -47,6 +50,18 @@ public class VisionUtils {
         try (final ByteArrayOutputStream output = new ByteArrayOutputStream()) {
             copy(input, output);
             return output.toByteArray();
+        }
+    }
+
+    public static byte[] toByteArray(final File file) throws IOException {
+        try (InputStream inputStream = new FileInputStream(file)) {
+            return toByteArray(inputStream);
+        }
+    }
+
+    public static byte[] toByteArray(final URL url) throws IOException {
+        try (InputStream inputStream = url.openStream()) {
+            return toByteArray(inputStream);
         }
     }
 

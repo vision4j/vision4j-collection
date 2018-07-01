@@ -4,7 +4,7 @@
 
     <groupId>com.vision4j</groupId>
     <artifactId>vision-utils</artifactId>
-    <version>1.2.3-SNAPSHOT</version>
+    <version>1.2.3</version>
 
     <parent>
         <groupId>org.sonatype.oss</groupId>
@@ -36,7 +36,7 @@
         <connection>scm:git:git@github.com:vision4j/vision4j-collection.git</connection>
         <developerConnection>scm:git:git@github.com:vision4j/vision4j-collection.git</developerConnection>
         <url>https://github.com/vision4j/vision4j-collection/tree/master</url>
-      <tag>HEAD</tag>
+      <tag>vision-utils-1.2.3</tag>
   </scm>
 
     <properties>

@@ -50,7 +50,7 @@
         <dependency>
             <groupId>com.vision4j</groupId>
             <artifactId>vision-utils</artifactId>
-            <version>1.2.2</version>
+            <version>1.2.3</version>
         </dependency>
     </dependencies>
 

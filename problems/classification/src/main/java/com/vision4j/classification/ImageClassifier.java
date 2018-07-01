@@ -3,6 +3,7 @@ package com.vision4j.classification;
 import com.vision4j.utils.Categories;
 import com.vision4j.utils.Category;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -49,4 +50,12 @@ public interface ImageClassifier {
      * @throws IOException if exception happens while predicting
      */
     Category predict(URL imageURL) throws IOException;
+
+    /**
+     * Predicts on an image from a given buffered image.
+     * @param bufferedImage the buffered image on which the prediction should be done
+     * @return the predicted category
+     * @throws IOException if exception happens while predicting
+     */
+    Category predict(BufferedImage bufferedImage) throws IOException;
 }

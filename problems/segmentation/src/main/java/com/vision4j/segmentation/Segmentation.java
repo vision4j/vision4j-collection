@@ -49,12 +49,5 @@ public interface Segmentation {
      */
     SegmentationResult segment(URL imageURL) throws IOException;
 
-    /**
-     * Predicts on a buffered image
-     * @param bufferedImage the buffered image
-     * @return the segmentation result, containing image with categories and the encoding
-     * @throws IOException if exception happens while reading the image from the stream
-     */
-    SegmentationResult segment(BufferedImage bufferedImage) throws IOException;
 
 }

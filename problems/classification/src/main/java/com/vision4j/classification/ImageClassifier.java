@@ -51,11 +51,4 @@ public interface ImageClassifier {
      */
     Category predict(URL imageURL) throws IOException;
 
-    /**
-     * Predicts on an image from a given buffered image.
-     * @param bufferedImage the buffered image on which the prediction should be done
-     * @return the predicted category
-     * @throws IOException if exception happens while predicting
-     */
-    Category predict(BufferedImage bufferedImage) throws IOException;
 }

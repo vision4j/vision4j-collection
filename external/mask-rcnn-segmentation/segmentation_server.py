@@ -21,7 +21,7 @@ class Segmentation(segmentation_pb2_grpc.SegmentationServicer):
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=1))
     segmentation_pb2_grpc.add_SegmentationServicer_to_server(Segmentation(), server)
-    server.add_insecure_port('[::]:50053')
+    server.add_insecure_port('[::]:50052')
     server.start()
 
     try:

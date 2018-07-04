@@ -176,13 +176,13 @@ TODO| TODO | TODO | TODO
 If you have a GPU:
 
 ```bash
-nvidia-docker run -it -p 50053:50053 vision4j/mask-rcnn-segmentation:gpu
+nvidia-docker run -it -p 50052:50052 vision4j/mask-rcnn-segmentation:gpu
 ```
 
 If you have only a CPU:
 
 ```bash
-docker run -it -p 50053:50053 vision4j/mask-rcnn-segmentation
+docker run -it -p 50052:50052 vision4j/mask-rcnn-segmentation
 ```
 
 Minimum required memory for the model: TODO

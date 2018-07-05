@@ -13,6 +13,7 @@ service Segmentation {
 
 message SegmentationArray {
     bytes result = 1;
+    
 }
 
 message Image {
@@ -20,8 +21,7 @@ message Image {
     int32 width = 2;
     int32 height = 3;
     int32 channels = 4;
-
     int32 original_width = 5;
     int32 original_height = 6;
-
+    
 }

@@ -2,16 +2,20 @@
 package com.vision4j.classification;
 
 import com.google.protobuf.ByteString;
-import com.vision4j.utils.*;
+import com.vision4j.classification.grpc.ClassificationGrpc;
+import com.vision4j.classification.grpc.Image;
+import com.vision4j.classification.grpc.Prediction;
+import com.vision4j.utils.Categories;
+import com.vision4j.utils.Category;
+import com.vision4j.utils.SimpleImageInfo;
+import com.vision4j.utils.VisionUtils;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import com.vision4j.classification.grpc.ClassificationGrpc;
-import com.vision4j.classification.grpc.Image;
-import com.vision4j.classification.grpc.Prediction;
 
 public class GrpcClassifier implements ImageClassifier {
 
@@ -27,6 +31,14 @@ public class GrpcClassifier implements ImageClassifier {
     public GrpcClassifier(String[] categoriesArray, ManagedChannel channel) {
         this.categories = new Categories(categoriesArray);
         this.classificationStub = ClassificationGrpc.newBlockingStub(channel);
+    }
+
+    public GrpcClassifier(String[] categoriesArray, String host, int port) {
+        this(categoriesArray, ManagedChannelBuilder.forAddress(host, port).usePlaintext().build());
+    }
+
+    public GrpcClassifier(String[] categoriesArray) {
+        this(categoriesArray, "localhost", 50051);
     }
 
     @Override()
@@ -64,5 +76,6 @@ public class GrpcClassifier implements ImageClassifier {
     }
 
     private Category convert(Prediction prediction) {
+        return getAcceptableCategories().get(prediction.getIndex());
     }
 }

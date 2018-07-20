@@ -13,6 +13,7 @@ service Classification {
 
 message Prediction {
     int32 index = 1;
+    
 }
 
 message Image {

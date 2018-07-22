@@ -64,6 +64,8 @@ public class GrpcSegmentation implements Segmentation {
         Image.Builder imageBuilder = Image.newBuilder();
         imageBuilder.setWidth(simpleImageInfo.getWidth());
         imageBuilder.setHeight(simpleImageInfo.getHeight());
+        imageBuilder.setOriginalHeight(simpleImageInfo.getHeight());
+        imageBuilder.setOriginalWidth(simpleImageInfo.getWidth());
         imageBuilder.setChannels(3);
         imageBuilder.setImageData(imageData);
         Image image = imageBuilder.build();

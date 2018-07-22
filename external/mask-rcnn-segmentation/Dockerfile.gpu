@@ -55,6 +55,7 @@ RUN wget https://s3.amazonaws.com/vision4j/problems/external_models/mask-rcnn-se
 RUN pip3 install -r /tmp/requirements.txt
 
 RUN mkdir -p /app
+RUN wget https://github.com/matterport/Mask_RCNN/releases/download/v2.0/mask_rcnn_coco.h5 -O /app/mask_rcnn_coco.h5
 
 
 RUN mkdir -p /app/proto

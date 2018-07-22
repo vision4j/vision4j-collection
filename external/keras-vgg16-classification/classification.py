@@ -14,8 +14,9 @@ def deserialize(request):
     data = request.image_data
     shape = (request.width, request.height, request.channels)
     nparr = np.fromstring(data, np.uint8)
-    img = cv2.cvtColor(cv2.imdecode(nparr, cv2.IMREAD_COLOR), cv2.COLOR_BGR2RGB).reshape(shape).astype(np.float64)
-    return img
+    img = cv2.cvtColor(cv2.imdecode(nparr, cv2.IMREAD_COLOR), cv2.COLOR_BGR2RGB)
+    return np.array(Image.fromarray(img).resize((224, 224))).astype(np.float64)
+
 
 def serialize(result):
     return classification_pb2.Prediction(index=result)

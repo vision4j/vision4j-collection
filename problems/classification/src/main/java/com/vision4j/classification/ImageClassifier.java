@@ -3,7 +3,6 @@ package com.vision4j.classification;
 import com.vision4j.utils.Categories;
 import com.vision4j.utils.Category;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;

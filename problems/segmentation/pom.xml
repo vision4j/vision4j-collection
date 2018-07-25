@@ -9,7 +9,7 @@
   </parent>
   <groupId>com.vision4j</groupId>
   <artifactId>segmentation</artifactId>
-  <version>1.2.4-SNAPSHOT</version>
+  <version>1.2.5-SNAPSHOT</version>
   <name>${project.groupId}:${project.artifactId}</name>
   <description>Core artifact for the Vision4j segmentation problem</description>
   <url>https://vision4j.com/</url>

@@ -32,7 +32,8 @@ the categories: `lion`, `cheetah` and `tiger`, when given an image in one of tho
 | ![alt text](img/cheetah.resized.jpg) | cheetah
 | ![alt text](img/lion.resized.jpg) | lion
 
-Go back to [table of contents](#table-of-contents)
+
+Not what you were looking for? Go back to [table of contents](#table-of-contents)
 
 Implementations available for this problem:
 
@@ -48,6 +49,8 @@ To use this implementation in your project, add the dependency:
     <version>1.3.0</version>
 </dependency>
 ```
+
+Not what you were looking for? Go back to [table of contents](#table-of-contents)
 
 This implementation uses [ND4J](https://nd4j.org/), so you should add one more dependency depending on whether 
 you have GPU or not. You can read more about it [here](https://nd4j.org/getstarted).
@@ -84,6 +87,8 @@ To use this implementation in your project, add the dependency:
 </dependency>
 ```
 
+Not what you were looking for? Go back to [table of contents](#table-of-contents)
+
 This implementation requires a GRPC server running with the classifier. You can use any C++, Python or Lua model. By default, it communicates over localhost on port 50051 and is usually faster than the corresponding DeepLearning4j implementation.
 You can read more about GRPC [here](https://grpc.io/).
 This model can be combined with any of the following models:
@@ -100,6 +105,8 @@ If you have only a CPU:
 ```bash
 docker run -it -p 50051:50051 vision4j/grpc-keras-vgg16-classification
 ```
+
+Not what you were looking for? Go back to [table of contents](#table-of-contents)
 
 Minimum required memory for the model: TODO
 
@@ -133,6 +140,8 @@ By a given image, for each pixel predict what it is. For example, if a model is 
 | ![alt text](img/seans.jpg) | ![alt text](img/segmentation_overlay.jpg)
 
 
+Not what you were looking for? Go back to [table of contents](#table-of-contents)
+
 Implementations available for this problem:
 
 #### GRPC segmentation
@@ -147,6 +156,8 @@ To use this implementation in your project, add the dependency:
     <version>1.0.0</version>
 </dependency>
 ```
+
+Not what you were looking for? Go back to [table of contents](#table-of-contents)
 
 This implementation requires a GRPC segmentation server. You can use any C++, Python or Lua model. By default, it communicates over localhost on port 50052 and is usually faster than the corresponding DeepLearning4j implementation.
 You can read more about GRPC [here](https://grpc.io/).
@@ -164,6 +175,8 @@ If you have only a CPU:
 ```bash
 docker run -it -p 50052:50052 vision4j/deeplabv3-pascal-voc-segmentation
 ```
+
+Not what you were looking for? Go back to [table of contents](#table-of-contents)
 
 Minimum required memory for the model: TODO
 
@@ -185,6 +198,8 @@ If you have only a CPU:
 ```bash
 docker run -it -p 50052:50052 vision4j/mask-rcnn-segmentation
 ```
+
+Not what you were looking for? Go back to [table of contents](#table-of-contents)
 
 Minimum required memory for the model: TODO
 

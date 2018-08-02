@@ -32,6 +32,7 @@ the categories: `lion`, `cheetah` and `tiger`, when given an image in one of tho
 | ![alt text](img/cheetah.resized.jpg) | cheetah
 | ![alt text](img/lion.resized.jpg) | lion
 
+Go back to [table of contents](#table-of-contents)
 
 Implementations available for this problem:
 

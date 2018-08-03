@@ -33,9 +33,13 @@ the categories: `lion`, `cheetah` and `tiger`, when given an image in one of tho
 | ![alt text](img/lion.resized.jpg) | lion
 
 
-Not what you were looking for? Go back to [table of contents](#table-of-contents)
+Classification is not the problem you were looking for? Go back to [table of contents](#table-of-contents)
 
-Implementations available for this problem:
+*How do we measure how good a model is?*
+
+By a given dataset, find the number of correctly classified examples and divide them to the total number of examples in the dataset (classification accuracy).
+
+Implementations available for the classification problem:
 
 #### Pretrained VGG16 on ImageNet using DeepLearning4j
 
@@ -140,9 +144,13 @@ By a given image, for each pixel predict what it is. For example, if a model is 
 | ![alt text](img/seans.jpg) | ![alt text](img/segmentation_overlay.jpg)
 
 
-Not what you were looking for? Go back to [table of contents](#table-of-contents)
+Segmentation is not the problem you were looking for? Go back to [table of contents](#table-of-contents)
 
-Implementations available for this problem:
+*How do we measure how good a model is?*
+
+By a given dataset, find the average IoU (Intersection over Union) across all given imags. IoU is calculated by taking the intersection between the ground truth and the prediction and dividing it to the union of the ground truth and the prediction
+
+Implementations available for the segmentation problem:
 
 #### GRPC segmentation
 

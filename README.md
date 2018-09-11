@@ -39,6 +39,13 @@ Classification is not the problem you were looking for? Go back to [table of con
 
 By a given dataset, find the number of correctly classified examples and divide them to the total number of examples in the dataset (classification accuracy).
 
+A list of the most important datasets with leaderboard links:
+
+| Dataset       | Leaderboard
+| ------------- |:-------------:|
+| ImageNet 2014 Classification + Localization challenge | http://image-net.org/challenges/LSVRC/2014/results#clsloc
+
+
 Implementations available for the classification problem:
 
 #### Pretrained VGG16 on ImageNet using DeepLearning4j
@@ -149,6 +156,14 @@ Segmentation is not the problem you were looking for? Go back to [table of conte
 *How do we measure how good a model is?*
 
 By a given dataset, find the average IoU (Intersection over Union) across all given imags. IoU is calculated by taking the intersection between the ground truth and the prediction and dividing it to the union of the ground truth and the prediction
+
+A list of the most important datasets with leaderboard links:
+
+| Dataset       | Leaderboard
+| ------------- |:-------------:|
+| Coco dataset segmentation | http://cocodataset.org/#detection-leaderboard
+| Pascal VOC 2012 | http://host.robots.ox.ac.uk:8080/leaderboard/displaylb.php?challengeid&#x3D;11&amp;compid&#x3D;6
+
 
 Implementations available for the segmentation problem:
 

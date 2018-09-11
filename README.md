@@ -162,7 +162,7 @@ A list of the most important datasets with leaderboard links:
 | Dataset       | Leaderboard
 | ------------- |:-------------:|
 | Coco dataset segmentation | http://cocodataset.org/#detection-leaderboard
-| Pascal VOC 2012 | http://host.robots.ox.ac.uk:8080/leaderboard/displaylb.php?challengeid&#x3D;11&amp;compid&#x3D;6
+| Pascal VOC 2012 | http://host.robots.ox.ac.uk:8080/leaderboard/displaylb.php?challengeid=11&compid=6
 
 
 Implementations available for the segmentation problem:

@@ -12,39 +12,35 @@ import com.vision4j.utils.*;
  */
 public interface Completion {
 
-    /**
-     * Predicts on an image read from input stream. Useful for example for APIs
-     *
-     * @param inputStream the stream from which the image should be read
-     * @return the completed image
-     * @throws IOException if exception happens while the model predicts
-     */
-    CompletionResult complete(InputStream imageInputStream) throws IOException;
+    CompletionResult complete(InputStream image, InputStream mask) throws IOException;
 
-    /**
-     * Predicts on an image read from file. Useful for testing and debugging
-     *
-     * @param file the file from which the image should be read
-     * @return the completed image
-     * @throws IOException if exception happens while reading the image from the stream
-     */
-    CompletionResult complete(File imageFile) throws IOException;
+    CompletionResult complete(InputStream image, File mask) throws IOException;
 
-    /**
-     * Predicts on an image by given its bytes
-     *
-     * @param imageBytes the bytes
-     * @return the completed image
-     * @throws IOException if exception happens while predicting
-     */
-    CompletionResult complete(byte[] imageBytes) throws IOException;
+    CompletionResult complete(InputStream image, byte[] mask) throws IOException;
 
-    /**
-     * Predicts on an image from a given URL.
-     *
-     * @param imageURL the url from which the image can be downloaded
-     * @return the completed image
-     * @throws IOException if exception happens while predicting
-     */
-    CompletionResult complete(URL imageURL) throws IOException;
+    CompletionResult complete(InputStream image, URL mask) throws IOException;
+
+    CompletionResult complete(File image, InputStream mask) throws IOException;
+
+    CompletionResult complete(File image, File mask) throws IOException;
+
+    CompletionResult complete(File image, byte[] mask) throws IOException;
+
+    CompletionResult complete(File image, URL mask) throws IOException;
+
+    CompletionResult complete(byte[] image, InputStream mask) throws IOException;
+
+    CompletionResult complete(byte[] image, File mask) throws IOException;
+
+    CompletionResult complete(byte[] image, byte[] mask) throws IOException;
+
+    CompletionResult complete(byte[] image, URL mask) throws IOException;
+
+    CompletionResult complete(URL image, InputStream mask) throws IOException;
+
+    CompletionResult complete(URL image, File mask) throws IOException;
+
+    CompletionResult complete(URL image, byte[] mask) throws IOException;
+
+    CompletionResult complete(URL image, URL mask) throws IOException;
 }

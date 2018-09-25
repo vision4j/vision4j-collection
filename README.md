@@ -16,6 +16,9 @@ a list of implementations for different computer vision problems in a plug-and-p
       - [Mask R-CNN pretrained on Coco dataset](#mask-r-cnn-pretrained-on-coco-dataset)
 
 
+  - [Completion](#completion)
+    - [GRPC completion](#grpc-completion)
+
 
 
 ## Problems
@@ -242,6 +245,65 @@ BufferedImage resultImage = res.getBufferedImage();
 ```
 
 The memory requirements and the prediction times depend on the model that is being delegated to.
+
+
+
+### Completion
+
+By a given image and a missing region in that image, fill in the missing region so that it fits with the rest of the image.
+
+| Input        | Output
+| ------------- |:-------------:|
+| ![alt text](img/smoke_and_people_input.png) ![alt text](img/smoke_and_people_mask.png) | ![alt text](img/smoke_and_people_output.png)
+
+
+Completion is not the problem you were looking for? Go back to [table of contents](#table-of-contents)
+
+*How do we measure how good a model is?*
+
+Different metrics exist for exemplar based inpainting and deep learning based models. One possible evaluator would be Naturalness Image Quality Evaluator (NIQE), or comparing it to the original image. A survey of different quality metrics is available in the paper [A critical survey of state-of-the-art image inpainting quality assessment metrics](https://www.sciencedirect.com/science/article/pii/S1047320317301803)
+
+A list of the most important datasets with leaderboard links:
+
+| Dataset       | Leaderboard
+| ------------- |:-------------:|
+
+
+Implementations available for the completion problem:
+
+#### GRPC completion
+
+Delegates to another completion model (in another languages) through GRPC call.
+
+To use this implementation in your project, add the dependency:
+```xml
+<dependency>
+    <groupId>com.vision4j</groupId>
+    <artifactId>grpc-completion</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
+Not what you were looking for? Go back to [table of contents](#table-of-contents)
+
+This implementation requires a GRPC segmentation server. You can use any C++, Python or Lua model. By default, it communicates over localhost on port 50053 and is usually faster than the corresponding DeepLearning4j implementation.
+You can read more about GRPC [here](https://grpc.io/).
+
+
+Once you have added the dependency and did the necessary setup, you can use it like this:
+
+```java
+Completion completion = new GimpGrpcCompletion();
+CompletionResult res = completion.complete(new File("people.jpg"), new File("mask.jpg"));
+BufferedImage resultImage = res.getBufferedImage();
+```
+
+Minimum required memory for the model: Depends on the model server
+
+Prediction times (in seconds):
+
+Image size | 1080Ti  | K80  | CPU (AMD Ryzen)
+-------------| ------------- |:-------------:|:-------------:|
 
 
 

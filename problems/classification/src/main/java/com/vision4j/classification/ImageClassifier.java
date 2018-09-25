@@ -12,39 +12,11 @@ import com.vision4j.utils.*;
  */
 public interface ImageClassifier extends CategoriesProblem {
 
-    /**
-     * Predicts on an image read from input stream. Useful for example for APIs
-     *
-     * @param inputStream the stream from which the image should be read
-     * @return the predicted category
-     * @throws IOException if exception happens while the model predicts
-     */
-    Category predict(InputStream imageInputStream) throws IOException;
+    Category predict(InputStream image) throws IOException;
 
-    /**
-     * Predicts on an image read from file. Useful for testing and debugging
-     *
-     * @param file the file from which the image should be read
-     * @return the predicted category
-     * @throws IOException if exception happens while reading the image from the stream
-     */
-    Category predict(File imageFile) throws IOException;
+    Category predict(File image) throws IOException;
 
-    /**
-     * Predicts on an image by given its bytes
-     *
-     * @param imageBytes the bytes
-     * @return the predicted category
-     * @throws IOException if exception happens while predicting
-     */
-    Category predict(byte[] imageBytes) throws IOException;
+    Category predict(byte[] image) throws IOException;
 
-    /**
-     * Predicts on an image from a given URL.
-     *
-     * @param imageURL the url from which the image can be downloaded
-     * @return the predicted category
-     * @throws IOException if exception happens while predicting
-     */
-    Category predict(URL imageURL) throws IOException;
+    Category predict(URL image) throws IOException;
 }

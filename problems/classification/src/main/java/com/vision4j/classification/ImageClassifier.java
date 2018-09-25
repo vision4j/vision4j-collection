@@ -19,7 +19,7 @@ public interface ImageClassifier extends CategoriesProblem {
      * @return the predicted category
      * @throws IOException if exception happens while the model predicts
      */
-    Category predict(InputStream inputStream) throws IOException;
+    Category predict(InputStream imageInputStream) throws IOException;
 
     /**
      * Predicts on an image read from file. Useful for testing and debugging
@@ -28,7 +28,7 @@ public interface ImageClassifier extends CategoriesProblem {
      * @return the predicted category
      * @throws IOException if exception happens while reading the image from the stream
      */
-    Category predict(File file) throws IOException;
+    Category predict(File imageFile) throws IOException;
 
     /**
      * Predicts on an image by given its bytes

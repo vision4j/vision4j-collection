@@ -19,7 +19,7 @@ public interface Segmentation extends CategoriesProblem {
      * @return the segmentation result, containing image with categories and the encoding
      * @throws IOException if exception happens while the model predicts
      */
-    SegmentationResult segment(InputStream inputStream) throws IOException;
+    SegmentationResult segment(InputStream imageInputStream) throws IOException;
 
     /**
      * Predicts on an image read from file. Useful for testing and debugging
@@ -28,7 +28,7 @@ public interface Segmentation extends CategoriesProblem {
      * @return the segmentation result, containing image with categories and the encoding
      * @throws IOException if exception happens while reading the image from the stream
      */
-    SegmentationResult segment(File file) throws IOException;
+    SegmentationResult segment(File imageFile) throws IOException;
 
     /**
      * Predicts on an image by given its bytes

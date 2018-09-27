@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.vision4j.completion.grpc";
+option java_outer_classname = "CompletionProto";
+option objc_class_prefix = "HLW";
+
+package completion;
+
+service Completion {
+    rpc Complete (CompletionInput) returns (CompletedImage) {}
+}
+
+message CompletedImage {
+    bytes result = 1;
+    
+}
+
+message Image {
+    bytes image_data = 1;
+    int32 width = 2;
+    int32 height = 3;
+    int32 channels = 4;
+    
+}
+
+
+message CompletionInput {
+    Image image = 1;
+    Image mask = 2;
+    
+}

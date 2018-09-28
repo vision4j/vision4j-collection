@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.sonatype.oss</groupId>
@@ -9,7 +8,7 @@
   </parent>
   <groupId>com.vision4j</groupId>
   <artifactId>grpc-completion</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.0</version>
   <name>${project.groupId}:${project.artifactId}</name>
   <description>GRPC completion model for the completion problem</description>
   <url>https://vision4j.com/</url>
@@ -31,6 +30,7 @@
     <connection>scm:git:git@github.com:vision4j/vision4j-collection.git</connection>
     <developerConnection>scm:git:git@github.com:vision4j/vision4j-collection.git</developerConnection>
     <url>https://github.com/vision4j/vision4j-collection/tree/master</url>
+    <tag>grpc-completion-1.0.0</tag>
   </scm>
   <properties>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>

@@ -6,6 +6,9 @@ import com.vision4j.completion.grpc.CompletionInput;
 import com.vision4j.utils.*;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,6 +16,8 @@ import java.net.URL;
 import com.vision4j.completion.grpc.CompletionGrpc;
 import com.vision4j.completion.grpc.Image;
 import com.vision4j.completion.grpc.CompletedImage;
+
+import javax.imageio.ImageIO;
 
 public class GrpcCompletion implements Completion {
 
@@ -90,12 +95,12 @@ public class GrpcCompletion implements Completion {
 
     @Override()
     public CompletionResult complete(byte[] image, byte[] mask) throws IOException {
-        Image serializedImage = prepareGrpcBytes(image);
-        Image serializedMask = prepareGrpcBytes(mask);
-        CompletionInput completionInput = CompletionInput.newBuilder()
-                .setImage(serializedImage)
-                .setMask(serializedMask)
-                .build();
+        Image serializedimage = this.prepareGrpcBytes(image);
+        Image serializedmask = this.prepareGrpcBytes(mask);
+        CompletionInput.Builder completionInputBuilder = CompletionInput.newBuilder();
+        completionInputBuilder.setImage(serializedimage);
+        completionInputBuilder.setMask(serializedmask);
+        CompletionInput completionInput = completionInputBuilder.build();
         CompletedImage completedimage = completionStub.complete(completionInput);
         return this.convert(completedimage);
     }
@@ -125,8 +130,10 @@ public class GrpcCompletion implements Completion {
         return this.complete(VisionUtils.toByteArray(image), VisionUtils.toByteArray(mask));
     }
 
-    private CompletionResult convert(CompletedImage completedimage) {
-        return null;
+    private CompletionResult convert(CompletedImage completedimage) throws IOException {
+        byte[] result = completedimage.getResult().toByteArray();
+        BufferedImage resultImage = ImageIO.read(new ByteArrayInputStream(result));
+        return new CompletionResult(resultImage);
     }
 
     private Image prepareGrpcBytes(byte[] image) throws IOException {

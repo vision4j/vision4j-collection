@@ -1,0 +1,42 @@
+FROM library/ubuntu:16.04
+
+RUN apt-get update
+
+RUN apt-get install -y \
+        build-essential \
+        cmake \
+        git \
+        wget \
+        unzip \
+        yasm \
+        pkg-config \
+        libswscale-dev \
+        libtbb2 \
+        libtbb-dev \
+        libjpeg-dev \
+        libpng-dev \
+        libtiff-dev \
+        libjasper-dev \
+        libavformat-dev \
+        libhdf5-dev \
+        libpq-dev
+
+WORKDIR /
+
+
+
+RUN apt-get update && apt-get install -y python-pip
+RUN pip install grpcio-tools==1.12.0
+
+RUN mkdir -p /app
+RUN apt-get update && apt-get install -y libsm6 libxext6 libgtk2.0-dev
+RUN apt-get update && apt-get install -y gimp-plugin-registry
+
+
+
+RUN mkdir -p /app/proto
+COPY completion.proto /app/proto
+COPY *.py /app/
+RUN python -m grpc_tools.protoc -I/app/proto --python_out=/app --grpc_python_out=/app /app/proto/completion.proto
+
+CMD ["python", "/app/completion_server.py"]

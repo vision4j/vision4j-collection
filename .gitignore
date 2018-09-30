@@ -17,3 +17,5 @@ models/vgg16-deeplearning4j-classifier/src/test/java/com/vision4j/classification
 models/vgg16-deeplearning4j-classifier/src/main/java/com/vision4j/classification/Experiments.java
 *.log
 models/grpc-segmentation/output.png
+models/grpc-completion/output.png
+models/grpc-completion/src/main/java/com/vision4j/completion/Experiments.java

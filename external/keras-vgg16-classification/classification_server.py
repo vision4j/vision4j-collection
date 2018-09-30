@@ -23,12 +23,13 @@ def serve():
     classification_pb2_grpc.add_ClassificationServicer_to_server(Classification(), server)
     server.add_insecure_port('[::]:50051')
     server.start()
-
+    
     try:
         callback_command = sys.argv[1]
         subprocess.call(callback_command, shell=True)
     except:
         pass
+    
 
     try:
         while True:

@@ -64,3 +64,4 @@ COPY *.py /app/
 RUN python -m grpc_tools.protoc -I/app/proto --python_out=/app --grpc_python_out=/app /app/proto/segmentation.proto
 
 CMD ["python", "/app/segmentation_server.py"]
+

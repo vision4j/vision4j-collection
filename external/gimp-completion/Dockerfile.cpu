@@ -59,6 +59,7 @@ RUN apt-get update && apt-get install -y gimp-plugin-registry
 COPY completion/completion-server.py /usr/lib/gimp/2.0/plug-ins/python-eval.py
 
 
+
 RUN mkdir -p /app/proto
 COPY completion.proto /app/proto
 COPY *.py /app/
@@ -67,3 +68,4 @@ RUN python -m grpc_tools.protoc -I/app/proto --python_out=/app --grpc_python_out
 COPY ./entrypoint.sh /
 WORKDIR /app
 ENTRYPOINT ["/entrypoint.sh"]
+

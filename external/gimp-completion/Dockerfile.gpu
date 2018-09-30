@@ -56,6 +56,7 @@ RUN pip install grpcio-tools==1.12.0 shortuuid Pillow
 RUN mkdir -p /app
 RUN apt-get update && apt-get install -y libsm6 libxext6 libgtk2.0-dev
 RUN apt-get update && apt-get install -y gimp-plugin-registry
+COPY completion/completion-server.py /usr/lib/gimp/2.0/plug-ins/python-eval.py
 
 
 
@@ -67,3 +68,4 @@ RUN python -m grpc_tools.protoc -I/app/proto --python_out=/app --grpc_python_out
 COPY ./entrypoint.sh /
 WORKDIR /app
 ENTRYPOINT ["/entrypoint.sh"]
+

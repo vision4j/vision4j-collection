@@ -23,12 +23,13 @@ def serve():
     segmentation_pb2_grpc.add_SegmentationServicer_to_server(Segmentation(), server)
     server.add_insecure_port('[::]:50052')
     server.start()
-
+    
     try:
         callback_command = sys.argv[1]
         subprocess.call(callback_command, shell=True)
     except:
         pass
+    
 
     try:
         while True:

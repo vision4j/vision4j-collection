@@ -63,3 +63,4 @@ COPY *.py /app/
 RUN python -m grpc_tools.protoc -I/app/proto --python_out=/app --grpc_python_out=/app /app/proto/classification.proto
 
 CMD ["python", "/app/classification_server.py"]
+

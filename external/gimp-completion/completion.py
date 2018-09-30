@@ -5,8 +5,12 @@ import time
 import sys
 import shortuuid
 import completion_pb2
+import numpy as np
+import cv2
 
 from PIL import Image
+from scipy.ndimage.morphology import binary_dilation, binary_erosion
+
 
 def drawable_of_file(filename):
     '''
@@ -91,12 +95,17 @@ def inpaint(image_id, img, prediction):
     completion(input_filename, mask_filename, output_filename)
 
 
-def deserialize(request):
-    data = request.image_data
-    shape = (request.width, request.height, request.channels)
+def create_image_from_protobuf(image):
+    data = image.image_data
+    shape = (image.width, image.height, image.channels)
     nparr = np.fromstring(data, np.uint8)
     img = cv2.cvtColor(cv2.imdecode(nparr, cv2.IMREAD_COLOR), cv2.COLOR_BGR2RGB)
     return img.astype(np.uint8)
+
+
+def deserialize(request):
+    return create_image_from_protobuf(request.image), create_image_from_protobuf(request.mask)
+
 
 def serialize(result):
     return completion_pb2.CompletedImage(result=result)
@@ -108,12 +117,18 @@ class GimpCompletion(object):
         pass
 
 
-    def complete(self):
-        raise NotImplementedError
+    def complete(self, image_id, image, mask):
+        inpaint(image_id, image, mask)
+        output_filename = 'results/{}.png'.format(image_id)
+        with open(output_filename, "rb") as f:
+            return f.read()
 
 
     def complete_on_deserialized(self, request, deserialized):
-        raise NotImplementedError
+        image_id = shortuuid.uuid()
+        image, mask = deserialized
+        result = self.complete(image_id, image, mask)
+        return result
 
 
     def complete_request(self, request):

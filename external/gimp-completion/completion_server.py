@@ -19,16 +19,12 @@ class Completion(completion_pb2_grpc.CompletionServicer):
 
 
 def serve():
+    print('Inside serve() method')
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=1))
     completion_pb2_grpc.add_CompletionServicer_to_server(Completion(), server)
     server.add_insecure_port('[::]:50053')
+    print('Starting server')
     server.start()
-
-    try:
-        callback_command = sys.argv[1]
-        subprocess.call(callback_command, shell=True)
-    except:
-        pass
 
     try:
         while True:

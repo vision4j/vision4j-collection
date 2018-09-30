@@ -1,4 +1,4 @@
-FROM library/ubuntu:16.04
+FROM tensorflow/tensorflow:1.8.0
 
 RUN apt-get update
 
@@ -56,7 +56,7 @@ RUN pip install grpcio-tools==1.12.0 shortuuid Pillow
 RUN mkdir -p /app
 RUN apt-get update && apt-get install -y libsm6 libxext6 libgtk2.0-dev
 RUN apt-get update && apt-get install -y gimp-plugin-registry
-
+COPY completion/completion-server.py /usr/lib/gimp/2.0/plug-ins/python-eval.py
 
 
 RUN mkdir -p /app/proto
@@ -64,4 +64,6 @@ COPY completion.proto /app/proto
 COPY *.py /app/
 RUN python -m grpc_tools.protoc -I/app/proto --python_out=/app --grpc_python_out=/app /app/proto/completion.proto
 
-CMD ["python", "/app/completion_server.py"]
+COPY ./entrypoint.sh /
+WORKDIR /app
+ENTRYPOINT ["/entrypoint.sh"]

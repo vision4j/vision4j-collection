@@ -1,4 +1,4 @@
-FROM library/ubuntu:16.04
+FROM tensorflow/tensorflow:1.8.0-gpu
 
 RUN apt-get update
 
@@ -64,4 +64,6 @@ COPY completion.proto /app/proto
 COPY *.py /app/
 RUN python -m grpc_tools.protoc -I/app/proto --python_out=/app --grpc_python_out=/app /app/proto/completion.proto
 
-CMD ["python", "/app/completion_server.py"]
+COPY ./entrypoint.sh /
+WORKDIR /app
+ENTRYPOINT ["/entrypoint.sh"]

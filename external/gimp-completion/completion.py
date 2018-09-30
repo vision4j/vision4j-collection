@@ -3,6 +3,8 @@ from gimpfu import *
 import gimpcolor
 import time
 import sys
+import shortuuid
+import completion_pb2
 
 from PIL import Image
 
@@ -90,10 +92,14 @@ def inpaint(image_id, img, prediction):
 
 
 def deserialize(request):
-    raise NotImplementedError
+    data = request.image_data
+    shape = (request.width, request.height, request.channels)
+    nparr = np.fromstring(data, np.uint8)
+    img = cv2.cvtColor(cv2.imdecode(nparr, cv2.IMREAD_COLOR), cv2.COLOR_BGR2RGB)
+    return img.astype(np.uint8)
 
 def serialize(result):
-    raise NotImplementedError
+    return completion_pb2.CompletedImage(result=result)
 
 
 class GimpCompletion(object):

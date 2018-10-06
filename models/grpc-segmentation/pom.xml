@@ -8,7 +8,7 @@
   </parent>
   <groupId>com.vision4j</groupId>
   <artifactId>grpc-segmentation</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2-SNAPSHOT</version>
   <name>${project.groupId}:${project.artifactId}</name>
   <description>GRPC segmentation model for the segmentation problem</description>
   <url>https://vision4j.com/</url>
@@ -30,7 +30,7 @@
     <connection>scm:git:git@github.com:vision4j/vision4j-collection.git</connection>
     <developerConnection>scm:git:git@github.com:vision4j/vision4j-collection.git</developerConnection>
     <url>https://github.com/vision4j/vision4j-collection/tree/master</url>
-    <tag>grpc-segmentation-1.0.1</tag>
+    <tag>HEAD</tag>
   </scm>
   <properties>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>

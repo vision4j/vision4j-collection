@@ -282,7 +282,7 @@ To use this implementation in your project, add the dependency:
 <dependency>
     <groupId>com.vision4j</groupId>
     <artifactId>grpc-completion</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 

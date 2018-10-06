@@ -21,26 +21,18 @@ import javax.imageio.ImageIO;
 
 public class GrpcCompletion implements Completion {
 
-    private final Categories categories;
-
     private final CompletionGrpc.CompletionBlockingStub completionStub;
 
-    public GrpcCompletion(Categories categories, ManagedChannel channel) {
-        this.categories = categories;
+    public GrpcCompletion(ManagedChannel channel) {
         this.completionStub = CompletionGrpc.newBlockingStub(channel);
     }
 
-    public GrpcCompletion(String[] categoriesArray, ManagedChannel channel) {
-        this.categories = new Categories(categoriesArray);
-        this.completionStub = CompletionGrpc.newBlockingStub(channel);
+    public GrpcCompletion(String host, int port) {
+        this(ManagedChannelBuilder.forAddress(host, port).usePlaintext().build());
     }
 
-    public GrpcCompletion(String[] categoriesArray, String host, int port) {
-        this(categoriesArray, ManagedChannelBuilder.forAddress(host, port).usePlaintext().build());
-    }
-
-    public GrpcCompletion(String[] categoriesArray) {
-        this(categoriesArray, "localhost", 50053);
+    public GrpcCompletion() {
+        this("localhost", 50053);
     }
 
     @Override()

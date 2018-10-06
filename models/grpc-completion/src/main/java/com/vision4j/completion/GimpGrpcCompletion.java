@@ -4,17 +4,17 @@ package com.vision4j.completion;
 import io.grpc.ManagedChannel;
 import static com.vision4j.utils.Constants.*;
 
-public class Places2Completion extends GrpcCompletion {
+public class GimpGrpcCompletion extends GrpcCompletion {
 
-    public Places2Completion() {
+    public GimpGrpcCompletion() {
         super();
     }
 
-    public Places2Completion(ManagedChannel channel) {
+    public GimpGrpcCompletion(ManagedChannel channel) {
         super(channel);
     }
 
-    public Places2Completion(String host, int port) {
+    public GimpGrpcCompletion(String host, int port) {
         super(host, port);
     }
 }

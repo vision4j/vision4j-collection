@@ -18,6 +18,8 @@ a list of implementations for different computer vision problems in a plug-and-p
 
   - [Completion](#completion)
     - [GRPC completion](#grpc-completion)
+      - [Gimp Resynthesizer Plugin](#gimp-resynthesizer-plugin)
+
 
 
 
@@ -288,9 +290,33 @@ Not what you were looking for? Go back to [table of contents](#table-of-contents
 
 This implementation requires a GRPC segmentation server. You can use any C++, Python or Lua model. By default, it communicates over localhost on port 50053 and is usually faster than the corresponding DeepLearning4j implementation.
 You can read more about GRPC [here](https://grpc.io/).
+This model can be combined with any of the following models:
 
+#### Gimp Resynthesizer Plugin
+If you have a GPU:
 
-Once you have added the dependency and did the necessary setup, you can use it like this:
+```bash
+nvidia-docker run -it -p 50053:50053 vision4j/gimp-completion:gpu
+```
+
+If you have only a CPU:
+
+```bash
+docker run -it -p 50053:50053 vision4j/gimp-completion
+```
+
+Not what you were looking for? Go back to [table of contents](#table-of-contents)
+
+Minimum required memory for the model: TODO
+
+Prediction times (in seconds):
+
+Image size | 1080Ti  | K80  | CPU (AMD Ryzen)
+-------------| ------------- |:-------------:|:-------------:|
+TODO| TODO | TODO | TODO
+---
+
+Once you have added the dependency and started the external model, you can use it like this:
 
 ```java
 Completion completion = new GimpGrpcCompletion();
@@ -298,12 +324,7 @@ CompletionResult res = completion.complete(new File("people.jpg"), new File("mas
 BufferedImage resultImage = res.getBufferedImage();
 ```
 
-Minimum required memory for the model: Depends on the model server
-
-Prediction times (in seconds):
-
-Image size | 1080Ti  | K80  | CPU (AMD Ryzen)
--------------| ------------- |:-------------:|:-------------:|
+The memory requirements and the prediction times depend on the model that is being delegated to.
 
 
 

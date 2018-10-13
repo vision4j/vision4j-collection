@@ -351,6 +351,7 @@ A list of the most important datasets with leaderboard links:
 | Dataset       | Leaderboard
 | ------------- |:-------------:|
 | Coco dataset | http://cocodataset.org/#detection-leaderboard
+| Pascal VOC 2012 | http://host.robots.ox.ac.uk:8080/leaderboard/displaylb.php?challengeid=11&compid=4
 
 
 Implementations available for the detection problem:

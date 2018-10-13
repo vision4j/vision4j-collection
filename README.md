@@ -21,6 +21,8 @@ a list of implementations for different computer vision problems in a plug-and-p
       - [Gimp Resynthesizer Plugin](#gimp-resynthesizer-plugin)
 
 
+  - [detection](#Detection)
+
 
 
 ## Problems
@@ -99,7 +101,7 @@ To use this implementation in your project, add the dependency:
 <dependency>
     <groupId>com.vision4j</groupId>
     <artifactId>grpc-classifier</artifactId>
-    <version>1.3.0</version>
+    <version>1.3.1</version>
 </dependency>
 ```
 
@@ -181,7 +183,7 @@ To use this implementation in your project, add the dependency:
 <dependency>
     <groupId>com.vision4j</groupId>
     <artifactId>grpc-segmentation</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
@@ -326,5 +328,28 @@ BufferedImage resultImage = res.getBufferedImage();
 
 The memory requirements and the prediction times depend on the model that is being delegated to.
 
+
+
+### detection
+
+By a given image, found the bounding box for a given category (or multiple categories). For example, if the model is trained to recognize the categories `car` and `pedestrian`, the output would be coordinates of the bounding boxes as well as the classes.
+
+| Input        | Output
+| ------------- |:-------------:|
+
+
+detection is not the problem you were looking for? Go back to [table of contents](#table-of-contents)
+
+*How do we measure how good a model is?*
+
+By a given dataset, find the average IoU (Intersection over Union) across all given imags. IoU is calculated by taking the intersection between the ground truth and the prediction and dividing it to the union of the ground truth and the prediction
+
+A list of the most important datasets with leaderboard links:
+
+| Dataset       | Leaderboard
+| ------------- |:-------------:|
+
+
+Implementations available for the detection problem:
 
 

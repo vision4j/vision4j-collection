@@ -151,7 +151,7 @@ The memory requirements and the prediction times depend on the model that is bei
 ### Segmentation
 
 By a given image, for each pixel predict what it is. For example, if a model is trained to recognize
-`person`, `table` and `bottle`, when given an image, it is able to correctly predict the boundaries of every category of objects.
+`person`, `table` and `bottle`, when given an image, it is able to correctly predict the boundaries of every category of objects. Also called instance segmentation.
 
 | Input        | Output
 | ------------- |:-------------:|

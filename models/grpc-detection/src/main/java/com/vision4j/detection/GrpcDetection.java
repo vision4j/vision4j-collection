@@ -11,7 +11,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Stream;
+import java.util.stream.Collectors;
 
 import com.vision4j.detection.grpc.DetectionGrpc;
 import com.vision4j.detection.grpc.Image;
@@ -42,6 +42,11 @@ public class GrpcDetection implements Detection {
     }
 
     @Override()
+    public Categories getCategories() {
+        return this.categories;
+    }
+
+    @Override()
     public DetectionResult detect(InputStream image) throws IOException {
         return this.detect(VisionUtils.toByteArray(image));
     }
@@ -53,8 +58,8 @@ public class GrpcDetection implements Detection {
 
     @Override()
     public DetectionResult detect(byte[] image) throws IOException {
-        Image serializedimage = this.prepareGrpcBytes(image);
-        DetectionBoundingBoxes detectionBoundingBoxes = detectionStub.detect(serializedimage);
+        Image serializedImage = this.prepareGrpcBytes(image);
+        DetectionBoundingBoxes detectionBoundingBoxes = detectionStub.detect(serializedImage);
         return this.convert(detectionBoundingBoxes);
     }
 
@@ -69,6 +74,18 @@ public class GrpcDetection implements Detection {
         for (Map.Entry<Integer, com.vision4j.detection.grpc.BoundingBoxes> entry: detectionBoundingBoxes.getCategoriesToBoundingBoxesMap().entrySet()) {
             Category category = getCategories().get(entry.getKey());
 
+            List<DetectionResult.BoundingBox> boundingBoxes = entry
+                    .getValue()
+                    .getBoundingBoxesList()
+                    .stream()
+                    .map(boundingBox -> new DetectionResult.BoundingBox(
+                            boundingBox.getLeft(),
+                            boundingBox.getTop(),
+                            boundingBox.getRight(),
+                            boundingBox.getBottom()))
+                    .collect(Collectors.toList());
+
+            detectionResult.put(category, boundingBoxes);
         }
 
         return detectionResult;
@@ -83,10 +100,5 @@ public class GrpcDetection implements Detection {
         imageBuilder.setChannels(3);
         imageBuilder.setImageData(imageData);
         return imageBuilder.build();
-    }
-
-    @Override
-    public Categories getCategories() {
-        return categories;
     }
 }

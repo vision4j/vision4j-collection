@@ -22,6 +22,7 @@ a list of implementations for different computer vision problems in a plug-and-p
 
 
   - [Detection](#detection)
+    - [GRPC detection](#grpc-detection)
 
 
 
@@ -138,7 +139,7 @@ TODO| TODO | TODO | TODO
 Once you have added the dependency and started the external model, you can use it like this:
 
 ```java
-ImageClassifier imageClassifier = new GrpcClassifier();
+ImageClassifier imageClassifier = new GrpcImageNetClassification();
 Category category = imageClassifier.predict(new File("./cheetah.jpg"));
 String name = category.getCategoryName(); // cheetah
 int index = category.getIndex(); // 293
@@ -355,5 +356,40 @@ A list of the most important datasets with leaderboard links:
 
 
 Implementations available for the detection problem:
+
+#### GRPC detection
+
+Delegates to another detection model (in another languages) through GRPC call.
+
+To use this implementation in your project, add the dependency:
+```xml
+<dependency>
+    <groupId>com.vision4j</groupId>
+    <artifactId>grpc-detection</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
+Not what you were looking for? Go back to [table of contents](#table-of-contents)
+
+This implementation requires a GRPC server running with the detection model. You can use any C++, Python or Lua model. By default, it communicates over localhost on port 50054 and is usually faster than the corresponding DeepLearning4j implementation.
+You can read more about GRPC [here](https://grpc.io/).
+
+
+Once you have added the dependency and did the necessary setup, you can use it like this:
+
+```java
+Detection detection = new GrpcDetection();
+DetectionResult res = detecion.detect(new File("./kites.jpg"));
+// res is now a map from categories to list of bounding boxes
+```
+
+Minimum required memory for the model: Depends on the model server
+
+Prediction times (in seconds):
+
+Image size | 1080Ti  | K80  | CPU (AMD Ryzen)
+-------------| ------------- |:-------------:|:-------------:|
+
 
 

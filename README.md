@@ -350,6 +350,7 @@ A list of the most important datasets with leaderboard links:
 
 | Dataset       | Leaderboard
 | ------------- |:-------------:|
+| Coco dataset segmentation | http://cocodataset.org/#detection-leaderboard
 
 
 Implementations available for the detection problem:

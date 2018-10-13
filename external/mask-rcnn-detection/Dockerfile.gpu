@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:1.8.0-gpu
+FROM tensorflow/tensorflow:1.8.0-gpu-py3
 
 RUN apt-get update
 
@@ -41,26 +41,27 @@ RUN apt-get update && apt-get install -y wget && wget https://github.com/opencv/
     -DBUILD_TESTS=OFF \
     -DBUILD_PERF_TESTS=OFF \
     -DCMAKE_BUILD_TYPE=RELEASE \
-    -DCMAKE_INSTALL_PREFIX=$(python -c "import sys; print(sys.prefix)") \
-    -DPYTHON_EXECUTABLE=$(which python) \
-    -DPYTHON_INCLUDE_DIR=$(python -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
-    -DPYTHON_PACKAGES_PATH=$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") .. \
+    -DCMAKE_INSTALL_PREFIX=$(python3 -c "import sys; print(sys.prefix)") \
+    -DPYTHON_EXECUTABLE=$(which python3) \
+    -DPYTHON_INCLUDE_DIR=$(python3 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
+    -DPYTHON_PACKAGES_PATH=$(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") .. \
     && make install \
     && rm /3.4.1.zip \
     && rm -r /opencv-3.4.1
 
 
-RUN pip install keras==2.1.6 grpcio-tools==1.12.0 
+RUN pip3 install --upgrade cython
+RUN wget https://s3.amazonaws.com/vision4j/problems/external_models/mask-rcnn-segmentation/requirements.txt -O /tmp/requirements.txt
+RUN pip3 install -r /tmp/requirements.txt
 
 RUN mkdir -p /app
-RUN mkdir -p /root/.keras/models && wget https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels.h5 -O /root/.keras/models/vgg16_weights_tf_dim_ordering_tf_kernels.h5
-
+RUN wget https://github.com/matterport/Mask_RCNN/releases/download/v2.0/mask_rcnn_coco.h5 -O /app/mask_rcnn_coco.h5
 
 
 RUN mkdir -p /app/proto
-COPY classification.proto /app/proto
+COPY detection.proto /app/proto
 COPY *.py /app/
-RUN python -m grpc_tools.protoc -I/app/proto --python_out=/app --grpc_python_out=/app /app/proto/classification.proto
+RUN python -m grpc_tools.protoc -I/app/proto --python_out=/app --grpc_python_out=/app /app/proto/detection.proto
 
-CMD ["python", "/app/classification_server.py"]
+CMD ["python", "/app/detection_server.py"]
 

@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.vision4j.detection.grpc";
+option java_outer_classname = "DetectionProto";
+option objc_class_prefix = "HLW";
+
+package detection;
+
+service Detection {
+    rpc Detect (Image) returns (DetectionBoundingBoxes) {}
+}
+
+message DetectionBoundingBoxes {
+    map<int32, BoundingBoxes> categoriesToBoundingBoxes = 1;
+    
+}
+
+message BoundingBoxes {
+    BoundingBox repeated = 1;
+}
+
+message BoundingBox {
+    int32 left = 1;
+    int32 top = 2;
+    int32 right = 3;
+    int32 bottom = 4;
+}
+
+message Image {
+    bytes image_data = 1;
+    int32 width = 2;
+    int32 height = 3;
+    int32 channels = 4;
+    
+}
+

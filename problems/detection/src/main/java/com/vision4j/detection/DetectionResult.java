@@ -3,8 +3,9 @@ package com.vision4j.detection;
 import com.vision4j.utils.Category;
 
 import java.util.HashMap;
+import java.util.List;
 
-public class DetectionResult extends HashMap<Category, DetectionResult.BoundingBox> {
+public class DetectionResult extends HashMap<Category, List<DetectionResult.BoundingBox>> {
 
     public static class BoundingBox {
         private int left;

@@ -337,6 +337,7 @@ By a given image, found the bounding box for a given category (or multiple categ
 | Input        | Output
 | ------------- |:-------------:|
 | ![alt text](img/input_detection_cars.jpg) | ![alt text](img/output_detection_cars.jpg)
+| ![alt text](img/input_tensorflow_kite.jpg) | ![alt text](img/output_tensorflow_kite.jpg)
 
 
 Detection is not the problem you were looking for? Go back to [table of contents](#table-of-contents)

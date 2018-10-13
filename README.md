@@ -21,7 +21,7 @@ a list of implementations for different computer vision problems in a plug-and-p
       - [Gimp Resynthesizer Plugin](#gimp-resynthesizer-plugin)
 
 
-  - [detection](#Detection)
+  - [Detection](#Detection)
 
 
 
@@ -330,15 +330,16 @@ The memory requirements and the prediction times depend on the model that is bei
 
 
 
-### detection
+### Detection
 
 By a given image, found the bounding box for a given category (or multiple categories). For example, if the model is trained to recognize the categories `car` and `pedestrian`, the output would be coordinates of the bounding boxes as well as the classes.
 
 | Input        | Output
 | ------------- |:-------------:|
+| ![alt text](img/input_detection_cars.jpg) | ![alt text](img/output_detection_cars.jpg)
 
 
-detection is not the problem you were looking for? Go back to [table of contents](#table-of-contents)
+Detection is not the problem you were looking for? Go back to [table of contents](#table-of-contents)
 
 *How do we measure how good a model is?*
 

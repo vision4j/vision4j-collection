@@ -17,7 +17,7 @@ message DetectionBoundingBoxes {
 }
 
 message BoundingBoxes {
-    BoundingBox repeated = 1;
+    repeated BoundingBox boundingBoxes = 1;
 }
 
 message BoundingBox {

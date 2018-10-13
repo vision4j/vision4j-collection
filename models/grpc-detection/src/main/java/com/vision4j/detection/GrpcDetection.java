@@ -9,12 +9,13 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.vision4j.detection.grpc.DetectionGrpc;
 import com.vision4j.detection.grpc.Image;
-import com.vision4j.detection.grpc.DetectionResult;
+import com.vision4j.detection.grpc.DetectionBoundingBoxes;
 
 public class GrpcDetection implements Detection {
 
@@ -51,10 +52,10 @@ public class GrpcDetection implements Detection {
     }
 
     @Override()
-    public DetectionResult detect(byte[] imageBytes) throws IOException {
-        Image serializedimage = this.prepareGrpcBytes(imageBytes);
-        com.vision4j.detection.grpc.DetectionBoundingBoxes detectionresult = detectionStub.detect(serializedimage);
-        return this.convert(detectionresult);
+    public DetectionResult detect(byte[] image) throws IOException {
+        Image serializedimage = this.prepareGrpcBytes(image);
+        DetectionBoundingBoxes detectionBoundingBoxes = detectionStub.detect(serializedimage);
+        return this.convert(detectionBoundingBoxes);
     }
 
     @Override()
@@ -62,17 +63,13 @@ public class GrpcDetection implements Detection {
         return this.detect(VisionUtils.toByteArray(image));
     }
 
-    private DetectionResult convert(com.vision4j.detection.grpc.DetectionBoundingBoxes detectionBoundingBoxes) {
+    private DetectionResult convert(DetectionBoundingBoxes detectionBoundingBoxes) {
         DetectionResult detectionResult = new DetectionResult();
 
-        Map<Category, DetectionResult.BoundingBox> boundingBoxes = detectionBoundingBoxes
-                .getCategoriesToBoundingBoxesMap()
-                .entrySet()
-                .stream()
-                .collect(Collectors.toMap(
-                        entry -> getCategories().get(entry.ge()),
-                        entry -> entry.getValue()
-                        ));
+        for (Map.Entry<Integer, com.vision4j.detection.grpc.BoundingBoxes> entry: detectionBoundingBoxes.getCategoriesToBoundingBoxesMap().entrySet()) {
+            Category category = getCategories().get(entry.getKey());
+
+        }
 
         return detectionResult;
     }

@@ -21,7 +21,7 @@ a list of implementations for different computer vision problems in a plug-and-p
       - [Gimp Resynthesizer Plugin](#gimp-resynthesizer-plugin)
 
 
-  - [Detection](#Detection)
+  - [Detection](#detection)
 
 
 

@@ -121,6 +121,12 @@ You can read more about GRPC [here](https://grpc.io/).
 This model can be combined with any of the following models:
 
 #### Keras VGG16 classification
+Paper: [Very Deep Convolutional Networks for Large-Scale Image Recognition](https://arxiv.org/pdf/1409.1556.pdf)
+
+Original repo: [https://github.com/keras-team/keras-applications/blob/master/keras_applications/vgg16.py](https://github.com/keras-team/keras-applications/blob/master/keras_applications/vgg16.py)
+
+Implementation license: MIT
+
 If you have a GPU:
 
 ```bash
@@ -203,6 +209,7 @@ You can read more about GRPC [here](https://grpc.io/).
 This model can be combined with any of the following models:
 
 #### DeepLabV3 Pascal VOC segmentation
+
 If you have a GPU:
 
 ```bash
@@ -226,6 +233,7 @@ Image size | 1080Ti  | K80  | CPU (AMD Ryzen)
 TODO| TODO | TODO | TODO
 ---
 #### Mask R-CNN pretrained on Coco dataset
+
 If you have a GPU:
 
 ```bash
@@ -304,6 +312,7 @@ You can read more about GRPC [here](https://grpc.io/).
 This model can be combined with any of the following models:
 
 #### Gimp Resynthesizer Plugin
+
 If you have a GPU:
 
 ```bash
@@ -385,6 +394,7 @@ You can read more about GRPC [here](https://grpc.io/).
 This model can be combined with any of the following models:
 
 #### Mask R-CNN detection pretrained on Coco dataset
+
 If you have a GPU:
 
 ```bash

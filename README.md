@@ -233,6 +233,11 @@ Image size | 1080Ti  | K80  | CPU (AMD Ryzen)
 TODO| TODO | TODO | TODO
 ---
 #### Mask R-CNN pretrained on Coco dataset
+Paper: [Mask R-CNN](https://arxiv.org/pdf/1703.06870.pdf)
+
+Original repo: [https://github.com/matterport/Mask_RCNN](https://github.com/matterport/Mask_RCNN)
+
+Implementation license: MIT
 
 If you have a GPU:
 

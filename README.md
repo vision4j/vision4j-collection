@@ -322,6 +322,11 @@ You can read more about GRPC [here](https://grpc.io/).
 This model can be combined with any of the following models:
 
 #### Gimp Resynthesizer Plugin
+Paper: [PatchMatch: A Randomized Correspondence Algorithm for Structural Image Editing](https://gfx.cs.princeton.edu/pubs/Barnes_2009_PAR/index.php)
+
+Original repo: [https://github.com/bootchk/resynthesizer](https://github.com/bootchk/resynthesizer)
+
+Implementation license: MIT
 
 If you have a GPU:
 

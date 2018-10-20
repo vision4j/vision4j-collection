@@ -62,6 +62,10 @@ Implementations available for the classification problem:
 
 Trained on the [ImageNet](www.image-net.org/) dataset.
 
+Paper: [Very Deep Convolutional Networks for Large-Scale Image Recognition](https://arxiv.org/pdf/1409.1556.pdf)
+Original repo: [https://github.com/deeplearning4j/deeplearning4j/blob/master/deeplearning4j/deeplearning4j-zoo/src/main/java/org/deeplearning4j/zoo/model/VGG16.java](https://github.com/deeplearning4j/deeplearning4j/blob/master/deeplearning4j/deeplearning4j-zoo/src/main/java/org/deeplearning4j/zoo/model/VGG16.java)
+Implementation license: [Apache 2.0]
+
 To use this implementation in your project, add the dependency:
 ```xml
 <dependency>

@@ -209,6 +209,11 @@ You can read more about GRPC [here](https://grpc.io/).
 This model can be combined with any of the following models:
 
 #### DeepLabV3 Pascal VOC segmentation
+Paper: [Rethinking Atrous Convolution for Semantic Image Segmentation](https://arxiv.org/pdf/1706.05587.pdf)
+
+Original repo: [https://github.com/tensorflow/models/tree/master/research/deeplab](https://github.com/tensorflow/models/tree/master/research/deeplab)
+
+Implementation license: MIT
 
 If you have a GPU:
 
@@ -399,6 +404,11 @@ You can read more about GRPC [here](https://grpc.io/).
 This model can be combined with any of the following models:
 
 #### Mask R-CNN detection pretrained on Coco dataset
+Paper: [Mask R-CNN](https://arxiv.org/pdf/1703.06870.pdf)
+
+Original repo: [https://github.com/matterport/Mask_RCNN](https://github.com/matterport/Mask_RCNN)
+
+Implementation license: MIT
 
 If you have a GPU:
 

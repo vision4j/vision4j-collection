@@ -121,6 +121,8 @@ You can read more about GRPC [here](https://grpc.io/).
 This model can be combined with any of the following models:
 
 #### Keras VGG16 classification
+Keras implementation of VGG16, pretrained on ImageNet.
+
 Paper: [Very Deep Convolutional Networks for Large-Scale Image Recognition](https://arxiv.org/pdf/1409.1556.pdf)
 
 Original repo: [https://github.com/keras-team/keras-applications/blob/master/keras_applications/vgg16.py](https://github.com/keras-team/keras-applications/blob/master/keras_applications/vgg16.py)
@@ -209,6 +211,8 @@ You can read more about GRPC [here](https://grpc.io/).
 This model can be combined with any of the following models:
 
 #### DeepLabV3 Pascal VOC segmentation
+Tensorflow implementation of DeepLabV3. Implementation is provided and maintained by Google.
+
 Paper: [Rethinking Atrous Convolution for Semantic Image Segmentation](https://arxiv.org/pdf/1706.05587.pdf)
 
 Original repo: [https://github.com/tensorflow/models/tree/master/research/deeplab](https://github.com/tensorflow/models/tree/master/research/deeplab)
@@ -238,6 +242,8 @@ Image size | 1080Ti  | K80  | CPU (AMD Ryzen)
 TODO| TODO | TODO | TODO
 ---
 #### Mask R-CNN pretrained on Coco dataset
+Mask R-CNN used for semantic segmentation.
+
 Paper: [Mask R-CNN](https://arxiv.org/pdf/1703.06870.pdf)
 
 Original repo: [https://github.com/matterport/Mask_RCNN](https://github.com/matterport/Mask_RCNN)
@@ -322,6 +328,8 @@ You can read more about GRPC [here](https://grpc.io/).
 This model can be combined with any of the following models:
 
 #### Gimp Resynthesizer Plugin
+Wrapper of the resynthesizer plugin in Gimp. Uses variation of PatchMatch that is close to the one used in Content-Aware fill in Adobe Photoshop.
+
 Paper: [PatchMatch: A Randomized Correspondence Algorithm for Structural Image Editing](https://gfx.cs.princeton.edu/pubs/Barnes_2009_PAR/index.php)
 
 Original repo: [https://github.com/bootchk/resynthesizer](https://github.com/bootchk/resynthesizer)
@@ -409,6 +417,8 @@ You can read more about GRPC [here](https://grpc.io/).
 This model can be combined with any of the following models:
 
 #### Mask R-CNN detection pretrained on Coco dataset
+Mask R-CNN used for object detection.
+
 Paper: [Mask R-CNN](https://arxiv.org/pdf/1703.06870.pdf)
 
 Original repo: [https://github.com/matterport/Mask_RCNN](https://github.com/matterport/Mask_RCNN)

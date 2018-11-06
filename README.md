@@ -26,6 +26,8 @@ a list of implementations for different computer vision problems in a plug-and-p
       - [Mask R-CNN detection pretrained on Coco dataset](#mask-r-cnn-detection-pretrained-on-coco-dataset)
 
 
+  - [Face detection](#face-detection)
+
 
 
 ## Problems
@@ -458,5 +460,28 @@ DetectionResult res = detecion.detect(new File("./kites.jpg"));
 
 The memory requirements and the prediction times depend on the model that is being delegated to.
 
+
+
+### Face detection
+
+By a given image, find the bounding boxes of all faces present.
+
+| Input        | Output
+| ------------- |:-------------:|
+
+
+Face detection is not the problem you were looking for? Go back to [table of contents](#table-of-contents)
+
+*How do we measure how good a model is?*
+
+By a given dataset, find the average IoU (Intersection over Union) across all given imags. IoU is calculated by taking the intersection between the ground truth and the prediction and dividing it to the union of the ground truth and the prediction
+
+A list of the most important datasets with leaderboard links:
+
+| Dataset       | Leaderboard
+| ------------- |:-------------:|
+
+
+Implementations available for the face_detection problem:
 
 

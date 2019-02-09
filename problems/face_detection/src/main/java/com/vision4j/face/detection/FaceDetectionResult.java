@@ -1,8 +1,10 @@
 package com.vision4j.face.detection;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-public class FaceDetectionResult extends ArrayList<FaceDetectionResult.BoundingBox> {
+public class FaceDetectionResult extends HashMap<String, List<FaceDetectionResult.BoundingBox>> {
 
     public static class BoundingBox {
         /**

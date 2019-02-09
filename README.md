@@ -27,6 +27,8 @@ a list of implementations for different computer vision problems in a plug-and-p
 
 
   - [Face detection](#face-detection)
+    - [GRPC face detection](#grpc-face-detection)
+
 
 
 
@@ -468,6 +470,7 @@ By a given image, find the bounding boxes of all faces present.
 
 | Input        | Output
 | ------------- |:-------------:|
+| ![alt text](img/obama_biden_input.jpg) | ![alt text](img/obama_biden_output.jpg)
 
 
 Face detection is not the problem you were looking for? Go back to [table of contents](#table-of-contents)
@@ -483,5 +486,35 @@ A list of the most important datasets with leaderboard links:
 
 
 Implementations available for the face_detection problem:
+
+#### GRPC face detection
+
+Delegates to another GRPC face detection model (in another languages) through GRPC call.
+
+To use this implementation in your project, add the dependency:
+```xml
+<dependency>
+    <groupId>com.vision4j</groupId>
+    <artifactId>grpc-face-detection</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
+Not what you were looking for? Go back to [table of contents](#table-of-contents)
+
+This implementation requires a GRPC face detection server. You can use any C++, Python or Lua model. By default, it communicates over localhost on port 50055 and is usually faster than the corresponding DeepLearning4j implementation. You can read more about GRPC [here](https://grpc.io/).
+This model can be combined with any of the following models:
+
+
+Once you have added the dependency and started the external model, you can use it like this:
+
+```java
+FaceDetection faceDetection = new grpc_face_detection();
+FaceDetectionResult faceDetectionResult = faceDetection.detect("obama_biden.jpg");
+
+```
+
+The memory requirements and the prediction times depend on the model that is being delegated to.
+
 
 

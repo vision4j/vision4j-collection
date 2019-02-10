@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.vision4j.face.detection.grpc";
+option java_outer_classname = "FaceDetectionProto";
+option objc_class_prefix = "HLW";
+
+package face.detection;
+
+service FaceDetection {
+    rpc Detect (Image) returns (DetectedFaces) {}
+}
+
+message DetectedFaces {
+    map<string, BoundingBoxes> facesMap = 1;
+    
+}
+
+message BoundingBoxes {
+    repeated BoundingBox boundingBoxes = 1;
+}
+
+message BoundingBox {
+    int32 left = 1;
+    int32 top = 2;
+    int32 right = 3;
+    int32 bottom = 4;
+}
+
+message Image {
+    bytes image_data = 1;
+    int32 width = 2;
+    int32 height = 3;
+    int32 channels = 4;
+    
+}
+

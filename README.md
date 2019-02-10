@@ -28,6 +28,7 @@ a list of implementations for different computer vision problems in a plug-and-p
 
   - [Face detection](#face-detection)
     - [GRPC face detection](#grpc-face-detection)
+      - [Dlib Face Recognition](#dlib-face-recognition)
 
 
 
@@ -505,11 +506,36 @@ Not what you were looking for? Go back to [table of contents](#table-of-contents
 This implementation requires a GRPC face detection server. You can use any C++, Python or Lua model. By default, it communicates over localhost on port 50055 and is usually faster than the corresponding DeepLearning4j implementation. You can read more about GRPC [here](https://grpc.io/).
 This model can be combined with any of the following models:
 
+#### Dlib Face Recognition
+Python face_recognition library, based on dlib C++ library for face recognition.
+
+If you have a GPU:
+
+```bash
+nvidia-docker run -it -p 50055:50055 vision4j/python-dlib-face-detection:gpu
+```
+
+If you have only a CPU:
+
+```bash
+docker run -it -p 50055:50055 vision4j/python-dlib-face-detection
+```
+
+Not what you were looking for? Go back to [table of contents](#table-of-contents)
+
+Minimum required memory for the model: TODO
+
+Prediction times (in seconds):
+
+Image size | 1080Ti  | K80  | CPU (AMD Ryzen)
+-------------| ------------- |:-------------:|:-------------:|
+TODO| TODO | TODO | TODO
+---
 
 Once you have added the dependency and started the external model, you can use it like this:
 
 ```java
-FaceDetection faceDetection = new grpc_face_detection();
+FaceDetection faceDetection = new GrpcFaceDetection();
 FaceDetectionResult faceDetectionResult = faceDetection.detect("obama_biden.jpg");
 
 ```

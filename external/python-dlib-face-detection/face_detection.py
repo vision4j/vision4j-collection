@@ -21,8 +21,28 @@ class DlibFaceDetection(object):
         pass
 
 
+    def detect(self, img):
+        return face_recognition.face_locations(img)
+
+
     def detect_on_deserialized(self, request, deserialized):
-        return face_recognition.face_locations(deserialized)
+        img = deserialized
+        face_locations = self.detect(img)
+        i = 0
+        res = {}
+        for face_location in face_locations:
+            top, right, bottom, left = face_location
+            key = 'auto' + str(i)
+            res[key] = face_detection_pb2.BoundingBoxes()
+            bbox = res[key].boundingBoxes.add()
+            bbox.left = left
+            bbox.right = right
+            bbox.top = top
+            bbox.bottom = bottom
+            i += 1
+
+        return res
+
 
 
     def detect_request(self, request):

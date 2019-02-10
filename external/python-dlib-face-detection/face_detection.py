@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import face_detection_pb2
+import face_recognition
 
 def deserialize(request):
     data = request.image_data
@@ -17,15 +18,11 @@ def serialize(result):
 class DlibFaceDetection(object):
 
     def __init__(self):
-        raise NotImplementedError
-
-
-    def detect(self):
-        raise NotImplementedError
+        pass
 
 
     def detect_on_deserialized(self, request, deserialized):
-        raise NotImplementedError
+        return face_recognition.face_locations(deserialized)
 
 
     def detect_request(self, request):

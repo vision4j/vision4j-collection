@@ -2,6 +2,10 @@ FROM aaftio/face_recognition:latest
 
 RUN apt-get update
 
+RUN add-apt-repository "deb http://security.ubuntu.com/ubuntu xenial-security main"
+RUN apt-get update
+RUN apt-get install libjasper1 libjasper-dev
+
 RUN apt-get install -y \
         build-essential \
         cmake \
@@ -16,7 +20,6 @@ RUN apt-get install -y \
         libjpeg-dev \
         libpng-dev \
         libtiff-dev \
-        # libjasper-dev \
         libavformat-dev \
         libhdf5-dev \
         libpq-dev
@@ -50,16 +53,16 @@ RUN apt-get update && apt-get install -y wget && wget https://github.com/opencv/
     && rm -r /opencv-3.4.1
 
 
-RUN pip install grpcio-tools==1.12.0
+RUN pip install grpcio-tools==1.12.0 jupyter
 
 RUN mkdir -p /app
 # no model to be download
 
 
 RUN mkdir -p /app/proto
-COPY face-detection.proto /app/proto
+COPY face_detection.proto /app/proto
 COPY *.py /app/
-RUN python -m grpc_tools.protoc -I/app/proto --python_out=/app --grpc_python_out=/app /app/proto/face-detection.proto
+RUN python -m grpc_tools.protoc -I/app/proto --python_out=/app --grpc_python_out=/app /app/proto/face_detection.proto
 
-CMD ["python", "/app/face-detection_server.py"]
+CMD ["python", "/app/face_detection_server.py"]
 

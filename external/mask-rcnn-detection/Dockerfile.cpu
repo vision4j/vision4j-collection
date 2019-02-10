@@ -2,6 +2,10 @@ FROM tensorflow/tensorflow:1.8.0-py3
 
 RUN apt-get update
 
+RUN add-apt-repository "deb http://security.ubuntu.com/ubuntu xenial-security main"
+RUN apt-get update
+RUN apt-get install libjasper1 libjasper-dev
+
 RUN apt-get install -y \
         build-essential \
         cmake \
@@ -16,7 +20,6 @@ RUN apt-get install -y \
         libjpeg-dev \
         libpng-dev \
         libtiff-dev \
-        libjasper-dev \
         libavformat-dev \
         libhdf5-dev \
         libpq-dev

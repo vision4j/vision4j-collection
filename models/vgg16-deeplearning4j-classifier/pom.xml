@@ -48,7 +48,7 @@
         <dl4j.version>0.9.1</dl4j.version>
         <datavec.version>0.9.1</datavec.version>
 
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <slf4j.version>1.7.25</slf4j.version>
 
     </properties>
